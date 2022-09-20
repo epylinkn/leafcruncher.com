@@ -1,3 +1,43 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://leafcruncher.com/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = '=xXx= LEAFCRUNCHER =xXx='
+theme = 'whiteplain'
+
+copyright = "&copy; copyright 2014"
+
+[params.author]
+  name = "ant"
+  twitter = "buoydontfloat"
+  instagram = "leaf.cruncher"
+  github = "79"
+  vimeo = "buoydontfloat"
+  email = "human@buoydontfloat.com"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
+
+# Header Menu
+[[menu.main]]
+  name = "Projects"
+  identifier = "projects"
+  url = "/projects/"
+  weight = 1
+[[menu.main]]
+  name = "Laboratory"
+  identifier = "laboratory"
+  url = "/laboratory/"
+  weight = 2
+[[menu.main]]
+  name = "About"
+  identifier = "about"
+  url = "/about/"
+  weight = 3
+
+# Footer Menu
+[[menu.footer]]
+  name = "About"
+  weight = 1
+  identifier = "about"
+  url = "/about/"
