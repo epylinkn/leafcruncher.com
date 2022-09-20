@@ -29,24 +29,24 @@ copyright = "&copy; COPYRIGHT 2014"
 
 # Header Menu
 [[menu.main]]
-  name = "Projects"
+  name = "projects"
   identifier = "projects"
   url = "/projects/"
   weight = 1
 [[menu.main]]
-  name = "Laboratory"
+  name = "laboratory"
   identifier = "laboratory"
   url = "/laboratory/"
   weight = 2
 [[menu.main]]
-  name = "About"
+  name = "about"
   identifier = "about"
   url = "/about/"
   weight = 3
 
 # Footer Menu
 [[menu.footer]]
-  name = "Archives"
+  name = "archives"
   identifier = "archives"
   url = "/archives/"
   weight = 1

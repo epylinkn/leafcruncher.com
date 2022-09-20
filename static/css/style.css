@@ -7,8 +7,20 @@ body {
   font-weight: 200;
 }
 
+.site-navi {
+  padding-bottom: 0;
+}
+
 .site-title {
   font-family: "Fredoka One";
   font-size: 3rem;
   font-weight: 400;
+}
+
+.article img {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  padding: 0;
 }
