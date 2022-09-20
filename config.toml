@@ -1,9 +1,18 @@
 baseURL = 'https://leafcruncher.com/'
 languageCode = 'en-us'
-title = '=xXx= LEAFCRUNCHER =xXx='
+title = 'LEAFCRUNCHER'
 theme = 'whiteplain'
 
-copyright = "&copy; copyright 2014"
+copyright = "&copy; COPYRIGHT 2014"
+
+[params]
+  google_fonts = [
+    ["Noto Sans Mono", "200, 400, 600"],
+    ["Fredoka One", "400"]
+  ]
+
+  heading_font = "Fredoka One"
+  body_font = "Noto Sans Mono"
 
 [params.author]
   name = "ant"
