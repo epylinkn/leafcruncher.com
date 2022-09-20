@@ -43,15 +43,10 @@ copyright = "&copy; COPYRIGHT 2014"
   identifier = "about"
   url = "/about/"
   weight = 3
-[[menu.main]]
-  name = "Archives"
-  identifier = "archives"
-  url = "/archives/"
-  weight = 4
 
 # Footer Menu
 [[menu.footer]]
-  name = "About"
+  name = "Archives"
+  identifier = "archives"
+  url = "/archives/"
   weight = 1
-  identifier = "about"
-  url = "/about/"

@@ -1,0 +1,6 @@
+@import url(./style-light.css);
+
+/* OVERRIDES */
+.site-title {
+  font-size: 3rem;
+}
