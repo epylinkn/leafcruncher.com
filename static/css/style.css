@@ -1,6 +1,13 @@
 @import url(./style-light.css);
 
 /* OVERRIDES */
+body {
+  line-height: 1.2;
+  font-weight: 200;
+}
+
 .site-title {
+  font-family: "Fredoka One";
   font-size: 3rem;
+  font-weight: 400;
 }

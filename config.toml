@@ -11,7 +11,7 @@ copyright = "&copy; COPYRIGHT 2014"
     ["Fredoka One", "400"]
   ]
 
-  heading_font = "Fredoka One"
+  heading_font = "Noto Sans Mono"
   body_font = "Noto Sans Mono"
 
 [params.author]
