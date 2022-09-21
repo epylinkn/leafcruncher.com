@@ -3,7 +3,7 @@ title: "at the bottom of the swimming pool (プールの底に)"
 date: 2022-07-30
 categories: [joylabo]
 tags: [installation]
-location: Tokamachi, Niigata, Japan
+location: tokamachi, niigata, japan
 link: https://www.echigo-tsumari.jp/en/art/artwork/at-the-bottom-of-the-swimming-pool/
 draft: False
 ---
