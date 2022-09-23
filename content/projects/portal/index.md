@@ -5,6 +5,8 @@ categories: [joylabo]
 tags: [interactive]
 location: bombay beach, salton sea, california
 link: https://joylabo.studio/projects/100-tvs
+homeimage: /img/projects/portal.jpg
+homelayout: landscape
 draft: False
 ---
 

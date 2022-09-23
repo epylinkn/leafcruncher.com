@@ -5,6 +5,8 @@ categories: [joylabo]
 tags: [interactive]
 location: brooklyn, new york
 link: https://www.echigo-tsumari.jp/en/art/artwork/at-the-bottom-of-the-swimming-pool/
+homelayout: landscape
+homeimage: /img/projects/cloud-bathroom.jpg
 draft: False
 ---
 

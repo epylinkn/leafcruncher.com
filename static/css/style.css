@@ -28,3 +28,21 @@ body {
   border: none;
   padding: 0;
 }
+
+.list .article-image {
+  width: 100%;
+  float: none;
+  margin-right: 0;
+}
+
+.portrait {
+  /* justify-content: space-between; */
+  display: flex;
+  align-items: center;
+}
+.portrait > div {
+  width: 50%;
+}
+.portrait > div:first-child {
+  margin-right: 1rem;
+}

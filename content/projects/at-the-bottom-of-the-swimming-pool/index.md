@@ -5,6 +5,9 @@ categories: [joylabo]
 tags: [installation]
 location: tokamachi, niigata, japan
 link: https://www.echigo-tsumari.jp/en/art/artwork/at-the-bottom-of-the-swimming-pool/
+homelayout: portrait
+homeimage: /img/projects/at-the-bottom-of-the-swimming-pool.webp
+homedescription: "at the bottom of the swimming pool invites viewers to descend, play and listen. piano notes mix with field recordings, sketching sonic pathways for brief contemplation. a tree with wings grows from the interactive sculpture. blank leaves and refracted sound offer an empty canvas of flattened time."
 draft: False
 ---
 

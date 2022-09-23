@@ -4,6 +4,14 @@ date: 2018-12-01
 tags: [interactive]
 location: brooklyn, new york
 venue: the paper box
+homelayout: portrait
+homeimage: /img/projects/in-dreams.webp
+homedescription: "
+IN DREAMS is a full-body instrument exploring skating as it is in my dreams...\
+without gravity\
+without endings\
+and, most importantly, without bruises.
+"
 draft: False
 ---
 

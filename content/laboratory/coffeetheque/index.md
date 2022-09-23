@@ -1,6 +1,8 @@
 ---
 title: "COFFEETHEQUE"
 date: 2019-02-01
+homelayout: landscape
+homeimage: /img/projects/coffeetheque.webp
 draft: False
 ---
 
