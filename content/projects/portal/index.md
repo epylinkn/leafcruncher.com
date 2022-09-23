@@ -24,4 +24,8 @@ as part of the inaugural year of Mars College, the portal also functions as a cr
 {{< image/hero src="portal-build.jpg" alt="portal builid" >}}
 {{< image/hero src="portal-freya.jpg" alt="portal freya" >}}
 {{< image/hero src="portal-roland.jpg" alt="portal roland" >}}
-{{< image/hero src="portal-build-01.jpg" alt="portal build" >}}
+{{< image/hero src="portal-hotel.jpg" alt="portal hotel" >}}
+{{< image/hero src="portal-tech.jpg" alt="portal tech" >}}
+{{< image/hero src="portal-audiovisual.jpg" alt="portal audiovisual" >}}
+{{< image/hero src="portal-build-01.jpg" alt="portal build 1" >}}
+{{< image/hero src="portal-build-02.jpg" alt="portal build 2" >}}

@@ -5,6 +5,9 @@ theme = 'whiteplain'
 
 copyright = "&copy; COPYRIGHT 2014"
 
+pluralizelisttitles = "false"
+
+
 [params]
   google_fonts = [
     ["Noto Sans Mono", "200, 400, 600"],
@@ -15,6 +18,7 @@ copyright = "&copy; COPYRIGHT 2014"
   body_font = "Noto Sans Mono"
 
 [params.author]
+  gravatar = "anthonybui@gmail.com"
   name = "ant"
   twitter = "buoydontfloat"
   instagram = "leaf.cruncher"

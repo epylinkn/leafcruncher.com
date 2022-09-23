@@ -2,11 +2,11 @@
 {{ define "main" }}
   {{- if eq .Kind "taxonomy" }}
   <div class="breadcrumb">
-    <a href="{{ "/" | relURL }}{{ .Data.Plural | urlize }}/">{{ .Data.Plural | humanize }}</a> / {{ .Data.Term | humanize }}
+    <a href="{{ "/" | relURL }}{{ .Data.Plural | urlize }}/">{{ .Data.Plural }}</a> / {{ .Data.Term }}
   </div>
   {{- else if eq .Kind "section" }}
   <div class="breadcrumb">
-    {{ .Title }}
+    {{ lower .Title }}
   </div>
   {{- end }}
   <div class="main" role="main">
