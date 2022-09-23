@@ -18,6 +18,22 @@ piano notes mix with field recordings, sketching sonic pathways for brief contem
 **open**: jul 31, 2022\
 **close**: nov 13, 2022
 
+{{< image/hero src="0001.webp" alt="pool piano" credit="mamiko myakoshi" >}}
+{{< image/hero src="0003.webp" alt="pool piano" credit="mamiko myakoshi" >}}
+{{< image/hero src="0004.webp" alt="pool piano" credit="mamiko myakoshi" >}}
+{{< image/hero src="0011.webp" alt="pool piano" credit="mamiko myakoshi" >}}
+{{< image/hero src="0018.webp" alt="pool piano" credit="mamiko myakoshi" >}}
+{{< image/hero src="0024.webp" alt="pool piano" credit="mamiko myakoshi" >}}
+{{< image/hero src="0025.webp" alt="pool piano" credit="mamiko myakoshi" >}}
+{{< image/hero src="0034.webp" alt="pool piano" credit="mamiko myakoshi" >}}
+{{< image/hero src="0039.webp" alt="pool piano" credit="mamiko myakoshi" >}}
+{{< image/hero src="0040.webp" alt="pool piano" credit="mamiko myakoshi" >}}
+{{< image/hero src="bts-01.webp" alt="pool piano" credit="mamiko myakoshi" >}}
+{{< image/hero src="bts-02.webp" alt="pool piano" credit="mamiko myakoshi" >}}
+{{< image/hero src="bts-03.webp" alt="pool piano" credit="mamiko myakoshi" >}}
+{{< image/hero src="bts-04.webp" alt="pool piano" credit="mamiko myakoshi" >}}
+{{< image/hero src="bts-05.webp" alt="pool piano" credit="mamiko myakoshi" >}}
+
 ## background
 
 interrupted and delayed, this was a project born and developed as a reaction to COVID-19. 
