@@ -3,10 +3,9 @@ languageCode = 'en-us'
 title = 'LEAFCRUNCHER'
 theme = 'whiteplain'
 
-copyright = "&copy; COPYRIGHT 2014"
+copyright = "&copy; LEAFCRUNCHER 2014"
 
 pluralizelisttitles = "false"
-
 
 [params]
   google_fonts = [
@@ -19,12 +18,12 @@ pluralizelisttitles = "false"
 
 [params.author]
   gravatar = "anthonybui@gmail.com"
-  name = "ant"
+  name = "anthony"
   twitter = "buoydontfloat"
   instagram = "leaf.cruncher"
   github = "79"
   vimeo = "buoydontfloat"
-  email = "human@buoydontfloat.com"
+  email = "anthony@leafcruncher.com"
 
 [taxonomies]
   category = "categories"
