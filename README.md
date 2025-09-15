@@ -9,6 +9,7 @@ Recommended Listening
 TODOS
 -----
 
+[] Facing the Fear Beast
 Gloria the Firefly @ Black Rock City, Nevada
 Mutant Vehicle at Burning Man: Metamorphoses
 Collective Obsolescence @ Brooklyn, New York

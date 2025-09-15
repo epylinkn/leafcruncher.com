@@ -1,5 +1,5 @@
 {{ $template := resources.Get "scss/main.scss" }}
-{{ $style := $template | resources.ExecuteAsTemplate "main.min.scss" . | resources.ToCSS }}
+{{ $style := $template | resources.ExecuteAsTemplate "main.min.scss" . | css.Sass }}
 <link rel="stylesheet" href="{{ $style.Permalink }}" media="all" />
 
 {{- partial "google_fonts.html" . }}
