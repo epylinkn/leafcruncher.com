@@ -90,9 +90,27 @@ Meanwhile the frontmatter already carries `location`, `venue`, `event`, and `lin
 
 ---
 
-## T2 — Copy consistency pass
+## T2 — Copy consistency pass ✅ DONE (2026-09-08)
 
 **Type:** consistency · **Size:** small
+
+All five text fixes are in. The Atlantic piece is now linked — the canonical URL
+is `theatlantic.com/technology/archive/2016/09/the-internet-may-be-as-segregated-as-a-city/498608/`,
+found via co-author Safiya Umoja Noble's own page, since theatlantic.com itself
+blocks automated fetches.
+
+Two notes:
+
+- `mcllwain` was corrected to `mcilwain` in **lowercase**. The correct letters
+  are I not L, but the body voice is deliberately lowercase and casing is not
+  ours to regularize.
+- `hubot` and `prismatic-light` still contain the same `mcllwain` typos, because
+  both carry a verbatim copy of the `search divides us` body. T4 deletes those
+  bodies wholesale; fixing typos in text that is about to be deleted is waste.
+
+**Still open:** `content/about/_index.md` says "artist & engineer living in
+**oakland**". Anthony has not given a replacement, so it stands. It is the only
+item of this task not closed.
 
 Fix only these. Do not otherwise regularize casing or punctuation.
 
@@ -107,9 +125,21 @@ Fix only these. Do not otherwise regularize casing or punctuation.
 
 ---
 
-## T3 — Ship Facing the Fearbeast
+## T3 — Ship Facing the Fearbeast ✅ DONE (2026-09-08)
 
 **Type:** documentation · **Blocked by:** T1, T8 · **Size:** small
+
+Live at leafcruncher.com/projects/facing-the-fearbeast/ and listed under
+"commissions & collaborations". Its credit renders from frontmatter like every
+other work: `role`, `lead_artist` (+ link) and `event` lifted out of the body,
+which no longer hand-types any of them.
+
+`authorship` is `collaboration`, not the `supporting` this task originally
+specified — the scheme gained a fourth value in T8, splitting someone-else-led
+work from paid commissions.
+
+The real blocker was never this page. It was written and pushed a year ago and
+sat unpublished because the deploy was broken; see T0.
 
 Set `authorship: supporting`, `lead_artist: Tigre Mashaal-Lively`, and lift the existing `**my role**:` line into the `role` field. This page is the reference implementation for T8 — once its credit renders from frontmatter like everything else, there's nothing left holding it back.
 
@@ -303,6 +333,73 @@ Current split, for whoever picks this up:
 The trade being accepted: upstream `taikii/whiteplain` fixes stop arriving. Given `single.html` is already a full copy and the styling is about to be rewritten anyway (see the mobile and slideshow work), that upstream link is close to worthless already.
 
 **Done when:** `themes/` is gone, `config.toml` names no theme, and the site builds byte-identically to before the move.
+
+---
+
+## T10 — Say what Anthony actually does on the joylabo works
+
+**Type:** documentation · **Size:** small · **Needs Anthony** · **Tabled (2026-09-08)**
+
+The four joylabo pages carry `role: artist & engineer` and 51–99 words of body
+copy each. In Anthony's words the reality is broader: *"i also do fabrication,
+planning, design, budgeting, everything."* None of that appears anywhere on the
+site.
+
+It deliberately did **not** go into `role`. That field is a credit line, scanned
+in a row with venue and dates; loading eight responsibilities onto every page
+flattens the contrast the field exists to create. `IN DREAMS` shows the better
+pattern already — `role: artist`, with the composition and performance carried in
+body prose, in Anthony's own voice.
+
+**Do:** add a sentence or two per page — `light-arcade`, `cloud-bathroom`,
+`portal`, `at-the-bottom-of-the-swimming-pool` — covering the fabrication,
+planning and budgeting side. Draft from Anthony's words and get them confirmed;
+do not invent specifics about who did what.
+
+**Done when:** each joylabo page says something concrete about Anthony's
+contribution beyond the credit line, in his voice.
+
+---
+
+## T11 — Re-source the low-resolution photos
+
+**Type:** archive · **Size:** medium · **Tabled (2026-09-08)**
+
+The site now generates a srcset at 480/960/1440/1920 and never upscales, so the
+ceiling on every photo is its source file. A phone at 3× wants ~1125px; the 900px
+desktop column at 2× wants ~1800px. Audited 2026-09-08:
+
+| work | shipping | original on disk | verdict |
+|---|---|---|---|
+| at the bottom of the swimming pool | 1600×1067 | **5760×3840** ×15 | re-run the pipeline, big win, no hunting |
+| COFFEETHEQUE | — | **4608×3456** | ditto |
+| IN DREAMS | — | **4000×6000** | ditto |
+| cloud bathroom | 2500×1563 | — | fine as-is |
+| search divides us | 1056×664 | — | marginal; source unknown |
+| light arcade | 1500×884 | none found | needs hunting |
+| **PORTAL** | **960×540** | none found | **worst — below phone resolution** |
+| facing the fearbeast | 1169×1169 | 1169×1169 **from Instagram** | see below |
+
+`raw/facing-the-fearbeast/` is **not** camera originals — the files are Instagram
+CDN downloads (`308069270_1307483310000604_…jpg`) already cropped square at
+1169×1169. The square framing is Instagram's, not this repo's pipeline. Real
+originals would have to come from the ten credited photographers (`@selimcinek`,
+`@lucas_mk`, `@therealmasoncalhoun`, `@vai7arte`, `@tet.1.18`, `@imgtrip`,
+`@royalphoenixart`, `@speyerphoto`, `@colinleibold`, `@dr.puya`) — a people
+problem, not a file-hunting one, and it needs their permission either way.
+
+Also note `scripts/optimize-image.sh` should not be re-run as written: it uses
+`-resize 3840x2160^ … -extent 3840x2160`, which **crops every image to 16:9**
+and force-fits thumbnails to a 400×400 square, and it has no `>` flag so it will
+upscale a small source into a large file with no extra detail. Rewrite it around
+what the originals actually are before using it again.
+
+**Do:** start with the three works whose originals are already on disk — that is
+pure gain and needs nobody. Then hunt for PORTAL and light arcade. Fearbeast is
+last and depends on other people.
+
+**Done when:** no published work ships a photo narrower than ~1800px unless no
+better source exists, and that exception is recorded here.
 
 ---
 

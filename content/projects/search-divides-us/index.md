@@ -17,11 +17,11 @@ a museum exhibit that invites users to understand internet segregation, especial
 
 ## research
 
-dr. charlton mcilwain, associate dean for faculty development & diversity, associate professor of media, culture, and communication at nyu. his work focuses on the intersections of race, digital media, and racial justice activism. his research reveals how internet’s categorizations create opportunities for inequality and more importantly how it has implications on the real world. he was also recently featured in the atlantic’s the internet may be segregated as a city.
+dr. charlton mcilwain, associate dean for faculty development & diversity, associate professor of media, culture, and communication at nyu. his work focuses on the intersections of race, digital media, and racial justice activism. his research reveals how internet’s categorizations create opportunities for inequality and more importantly how it has implications on the real world. he was also recently featured in the atlantic’s [the internet may be segregated as a city](https://www.theatlantic.com/technology/archive/2016/09/the-internet-may-be-as-segregated-as-a-city/498608/).
 
 ## background
 
-this exhibit playfully communicates serious research about internet segregation by dr.charlton mcllwainthe current architecture of the web encourages categorization. however, this categorization can negatively affect real-world outcomes. in our exhibit piece, we examine the pre-existing, technical, & emergent bias of web traffic segregation. search divides us is an exploration of systemic racial bias through machine learning & tactile interaction.
+this exhibit playfully communicates serious research about internet segregation by dr.charlton mcilwain the current architecture of the web encourages categorization. however, this categorization can negatively affect real-world outcomes. in our exhibit piece, we examine the pre-existing, technical, & emergent bias of web traffic segregation. search divides us is an exploration of systemic racial bias through machine learning & tactile interaction.
 
 ## exhibit goals
 

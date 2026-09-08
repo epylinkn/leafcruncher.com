@@ -23,7 +23,7 @@ draft: false
 as part of the inaugural year of Mars College, the portal also functions as a creative canvas for its community. 
 
 {{< image/hero src="portal.jpg" alt="portal detail" >}}
-{{< image/hero src="portal-build.jpg" alt="portal builid" >}}
+{{< image/hero src="portal-build.jpg" alt="portal build" >}}
 {{< image/hero src="portal-freya.jpg" alt="portal freya" >}}
 {{< image/hero src="portal-roland.jpg" alt="portal roland" >}}
 {{< image/hero src="portal-hotel.jpg" alt="portal hotel" >}}

@@ -13,7 +13,7 @@ draft: false
 
 {{< image/hero src="light-arcade-hero.png" alt="light web" >}}
 
-**the light aracde** is an interactive light web, controlled by a classic arcade machine. mini-games that use a joystick and two buttons allow users to change the visuals of the oversized web. the piece was installed for a gallery party on a rooftop overlooking the nyc skyline, and at a party in arcade, new york.
+**the light arcade** is an interactive light web, controlled by a classic arcade machine. mini-games that use a joystick and two buttons allow users to change the visuals of the oversized web. the piece was installed for a gallery party on a rooftop overlooking the nyc skyline, and at a party in arcade, new york.
 
 
 {{< image/hero src="light-arcade-perspective.jpg" alt="light arcade perspective" >}}
