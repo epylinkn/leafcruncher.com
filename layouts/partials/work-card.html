@@ -32,11 +32,36 @@
     {{- end }}
   </ul>
 
-  {{- if and (isset .Params "homeimage") .Params.homeimage }}
-    <div class="{{ .Params.homelayout }}">
+  {{/*
+    Cover image. `homeimage` is an explicit editorial choice and always wins.
+    Without one a work used to render as a bare title with no thumbnail —
+    facing-the-fearbeast and search-divides-us both did — so fall back to the
+    page's own first photo, skipping the _thumb variants, and resize it for
+    the listing. Set `homeimage` to override which photo is used.
+  */}}
+  {{- $cover := .Params.homeimage }}
+  {{- $coverRes := false }}
+  {{- if not $cover }}
+    {{- range .Resources.ByType "image" }}
+      {{- if and (not $coverRes) (not (strings.Contains .Name "_thumb")) }}
+        {{- $coverRes = . }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+
+  {{- if or $cover $coverRes }}
+    <div class="{{ .Params.homelayout | default "landscape" }}">
       <div>
         <a href="{{ .Permalink | relURL }}">
-          <img src="{{ .Params.homeimage }}" class="article-image" />
+          {{- if $cover }}
+          <img src="{{ $cover }}" class="article-image" />
+          {{- else }}
+          {{- $w := math.Min $coverRes.Width 960 }}
+          {{- $small := $coverRes.Resize (printf "%.0fx webp q82" $w) }}
+          <img src="{{ $small.RelPermalink }}" class="article-image"
+               width="{{ $small.Width }}" height="{{ $small.Height }}"
+               loading="lazy" decoding="async" alt="{{ .Title }}" />
+          {{- end }}
         </a>
       </div>
 

@@ -153,6 +153,17 @@ dl.project-meta {
   }
 }
 
+// Images now carry intrinsic width/height attributes (they reserve layout space
+// and stop the page jumping as photos load). The theme sets `.article img
+// { width: 100% }` with no height, so without this the height ATTRIBUTE becomes
+// the CSS height and every photo is stretched to a square-ish box. Aspect ratio
+// must come from the width.
+.article img,
+.article-image,
+figure.hero img {
+  height: auto;
+}
+
 // A bare URL in prose is one unbreakable word and pushes the whole page wider
 // than the screen (the swimming-pool page does this). Let long tokens break
 // rather than making every page scroll sideways. Applies at all widths — a
