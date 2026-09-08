@@ -17,6 +17,7 @@
   # 0.150.0 matches the version this site is developed against locally.
   HUGO_VERSION = "0.150.0"
 
-  # The build does not use Node (no package.json); this only moves the
-  # project off the end-of-life Node 16 that Netlify warns about.
-  NODE_VERSION = "22"
+  # NODE_VERSION is deliberately NOT set here. The Node version lives in
+  # `.node-version`, which Netlify and nodenv both read, so local and CI
+  # cannot drift apart. Setting it here too would silently override that
+  # file — the same class of mismatch that broke the Hugo build.

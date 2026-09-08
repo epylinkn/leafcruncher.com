@@ -98,9 +98,13 @@ Push to `master` → Netlify builds → live at leafcruncher.com. There is no
 manual build or upload step, and `public/` is gitignored; never commit it.
 
 The host is Netlify, project `astounding-paletas-999c32`. Build settings live
-in `netlify.toml` (build command, publish dir, `HUGO_VERSION`) — change them
-there, in a commit, rather than in the Netlify UI, so the deploy stays
-reviewable in-repo.
+in `netlify.toml` (build command, publish dir, `HUGO_VERSION`) and
+`.node-version` — change them there, in a commit, rather than in the Netlify
+UI, so the deploy stays reviewable in-repo.
+
+The build itself uses no Node (there is no `package.json`, and no Netlify
+functions); `.node-version` exists to keep the project off end-of-life Node
+and to pin nodenv locally to the same version.
 
 **A failed Netlify build is silent.** Netlify keeps serving the last good
 deploy and nothing about the site looks wrong. That is exactly how a finished
