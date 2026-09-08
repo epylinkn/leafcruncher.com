@@ -259,9 +259,11 @@ The site serves ~200 KB WebP derivatives. If this disk goes, the originals go.
 
 ---
 
-## T9 — Absorb the theme and restyle from scratch
+## T9 — Absorb the theme and restyle from scratch ✅ DONE (2026-09-08)
 
 **Type:** infrastructure · **Size:** large · **Anthony's call (2026-09-08)**
+
+Shipped in `1449598`. `themes/` is gone, `config.toml` names no theme, and `public/` was byte-identical before and after the move — same 253 files, same digest `6a7bd37a…`, `diff -rq` clean. taikii's MIT licence is kept at `LICENSE.whiteplain`. The table below is the split as it was at the time, kept as a record of what moved.
 
 Working across `themes/whiteplain/layouts/` and `/layouts/` means a constant two-place comparison: to change anything you first have to work out whether the file is overridden, theme-owned, or new. Anthony's proposal is to stop straddling — **copy the theme's templates into `/layouts/` and delete `themes/whiteplain`**, so there is one place to look.
 
