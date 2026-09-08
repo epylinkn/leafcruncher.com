@@ -1,7 +1,6 @@
 baseURL = 'https://leafcruncher.com/'
 languageCode = 'en-us'
 title = 'LEAFCRUNCHER'
-theme = 'whiteplain'
 
 copyright = "&copy; LEAFCRUNCHER 2014"
 
