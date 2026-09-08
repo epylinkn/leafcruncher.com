@@ -1,6 +1,24 @@
+{{/*
+  The inline nav is the desktop presentation. On narrow screens it is replaced
+  by the leaf toggle and a full-page drawer; both are rendered from the same
+  menu so there is only ever one list to keep correct. The toggle carries no
+  behaviour without JS — the drawer markup starts open-to-the-DOM but hidden,
+  and static/js/nav.js wires it up, so a JS failure leaves the desktop list
+  visible rather than an unreachable menu.
+*/}}
 <header class="site-header">
   <nav class="site-navi">
     <h1 class="site-title"><a href="{{ "/" | relURL }}">{{ .Site.Title }}</a></h1>
+
+    <button class="nav-toggle" type="button" aria-expanded="false"
+            aria-controls="site-drawer" aria-label="Open menu" hidden>
+      <span class="nav-leaf-wrap">
+        <svg class="nav-leaf" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17 1.01.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/>
+        </svg>
+      </span>
+    </button>
+
     <ul class="site-navi-items">
       {{- range .Site.Menus.main }}
       <li class="site-navi-item-{{ .Identifier }}"><a href="{{ .URL | safeURL }}" title="{{ .Name }}">{{ .Name }}</a></li>
@@ -9,3 +27,14 @@
   </nav>
 </header>
 <hr class="site-header-bottom">
+
+<div class="site-drawer" id="site-drawer" hidden>
+  <ul class="site-drawer-items">
+    {{- range .Site.Menus.main }}
+    <li><a href="{{ .URL | safeURL }}">{{ .Name }}</a></li>
+    {{- end }}
+    {{- range .Site.Menus.footer }}
+    <li class="is-secondary"><a href="{{ .URL | safeURL }}">{{ .Name }}</a></li>
+    {{- end }}
+  </ul>
+</div>

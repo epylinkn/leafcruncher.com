@@ -319,3 +319,172 @@ html.lightbox-open {
     padding: 3rem 0.4rem 3.5rem;
   }
 }
+
+// ---------------------------------------------------------------------------
+// Mobile nav: leaf toggle + full-page drawer
+//
+// Desktop keeps the inline list. Below the breakpoint the list is replaced by
+// a leaf button that opens a drawer over the whole page. The button is only
+// unhidden by JS, so without it the inline list stays visible rather than
+// leaving a dead button.
+// ---------------------------------------------------------------------------
+
+.nav-toggle {
+  display: none;
+  position: relative;
+  z-index: 1102; // above the drawer, so it stays tappable to close
+  background: none;
+  border: 0;
+  padding: 0.35rem;
+  margin-left: auto;
+  cursor: pointer;
+  color: inherit;
+  line-height: 0;
+  // Comfortable thumb target.
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.nav-leaf-wrap {
+  display: inline-block;
+  // The leaf sways gently at rest — enough to read as alive, not enough to nag.
+  animation: leaf-sway 4.5s ease-in-out infinite;
+  transform-origin: 70% 30%;
+}
+
+.nav-leaf {
+  width: 34px;
+  height: 34px;
+  fill: currentColor;
+  transition: transform 0.42s cubic-bezier(0.34, 1.3, 0.5, 1);
+  transform-origin: 50% 50%;
+}
+
+// Open: the leaf tumbles as if falling, and settles upside-down. Same button
+// closes it, so it reads as a state, not a second control.
+.nav-toggle.is-open .nav-leaf {
+  transform: rotate(202deg) scale(0.92);
+}
+
+.nav-toggle.is-open .nav-leaf-wrap {
+  animation: none;
+}
+
+@keyframes leaf-sway {
+  0%,
+  100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+.site-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 1101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: honeydew;
+  // Drawers down over the page from the top.
+  transform: translateY(-100%);
+  transition: transform 0.36s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: env(safe-area-inset-top) 1.5rem env(safe-area-inset-bottom);
+
+  &.is-open {
+    transform: translateY(0);
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.site-drawer-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+
+  li {
+    opacity: 0;
+    transform: translateY(-0.6rem);
+  }
+
+  a {
+    display: block;
+    padding: 0.55rem 0;
+    font-family: "Fredoka One", sans-serif;
+    font-size: 2.4rem;
+    line-height: 1.15;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .is-secondary a {
+    font-family: inherit;
+    font-size: 1.1rem;
+    opacity: 0.55;
+    padding-top: 1.4rem;
+  }
+}
+
+// Links arrive just behind the panel, staggered, so the drawer has some life.
+.site-drawer.is-open .site-drawer-items li {
+  animation: drawer-item-in 0.3s ease-out forwards;
+
+  &:nth-child(1) { animation-delay: 0.10s; }
+  &:nth-child(2) { animation-delay: 0.16s; }
+  &:nth-child(3) { animation-delay: 0.22s; }
+  &:nth-child(4) { animation-delay: 0.28s; }
+}
+
+@keyframes drawer-item-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html.drawer-open {
+  overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // The inline list is the desktop presentation; the drawer replaces it here.
+  .site-navi-items {
+    display: none;
+  }
+
+  .site-navi {
+    align-items: center;
+  }
+}
+
+// Respect a stated preference for less movement: the drawer still opens, it
+// just stops sliding, swaying and staggering.
+@media (prefers-reduced-motion: reduce) {
+  .nav-leaf-wrap,
+  .site-drawer.is-open .site-drawer-items li {
+    animation: none;
+  }
+
+  .site-drawer,
+  .nav-leaf {
+    transition: none;
+  }
+
+  .site-drawer-items li {
+    opacity: 1;
+    transform: none;
+  }
+}
