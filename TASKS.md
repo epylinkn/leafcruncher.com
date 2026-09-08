@@ -46,9 +46,13 @@ That is the whole story. `.git/COMMIT_EDITMSG` still holds *"rough AI draft: fea
 
 ---
 
-## T1 — Render project metadata from frontmatter
+## T1 — Render project metadata from frontmatter ✅ DONE (2026-09-08)
 
 **Type:** consistency · **Blocks:** T3 · **Size:** medium
+
+Shipped in `9c7de15`, together with T8. `layouts/partials/project-meta.html` renders the metadata; `layouts/_default/single.html` calls it; all 15 files normalized and the hand-typed `**location**` / `**open**` / `**close**` blocks deleted. The three verified bugs are gone: cloud bathroom's wrong `link:` removed, and both stray years disappeared with the body lines that carried them.
+
+One loss worth knowing: portal's location line linked `https://mars.college`, and the schema has nowhere to put a second URL. The prose still names Mars College, unlinked.
 
 Every project hand-types its metadata into the body:
 
@@ -123,9 +127,17 @@ It's the best-documented page in the repo: per-image photo credits, a named lead
 
 ---
 
-## T8 — Role and authorship: make the site able to say what Anthony did
+## T8 — Role and authorship: make the site able to say what Anthony did ⚠️ MOSTLY DONE (2026-09-08)
 
 **Type:** consistency · **Pairs with:** T1 · **Unblocks:** T3, T4 · **Size:** medium
+
+Shipped in `9c7de15`. The scheme changed in the doing: `authorship` has **four** values — `mine` · `collective` · `commission` · `collaboration` — collapsing into two display tiers, "works" and "commissions & collaborations". This splits the old `supporting` into paid-contractor work and someone-else-led work, and settles this task's open question: prismatic light is a `commission`, matching Anthony's own "more a contractor".
+
+**Still open — needs Anthony:**
+
+- `role` is set on only **3 of 15** works (`facing-the-fearbeast`, `hubot`, `prismatic-light`) — the only ones with a sourced role. The other 12 are blank because a role is a claim about what Anthony did and must not be guessed. **This defeats the point of the task:** role was meant to be universal so that a supporting credit reads as precision rather than apology. With only the commissioned works carrying one, it still reads as apology. Fill in the remaining 12.
+- `operation-criminal-cryptokitty` is absent from the table below (it covers 14 of 15 works) — `authorship: TODO(anthony)`.
+- `prismatic-light` — `lead_artist: "TODO(anthony): creative design credit"`. Someone else did the creative design; the name was deliberately not invented.
 
 The reason `hubot`, `prismatic light` and `facing the fearbeast` have sat unpublished is not that they're unfinished — it's that **the site has no way to state a role.** Every page implicitly claims full authorship, so publishing a supporting-role work would over-claim, and the accurate version isn't currently sayable.
 
@@ -244,6 +256,28 @@ The site serves ~200 KB WebP derivatives. If this disk goes, the originals go.
 **Do:** pull all five with `yt-dlp` at best available quality into a location outside this repo, and get `raw/` onto a second disk or backup target. Do not commit either into git — keep `raw/` ignored.
 
 **Done when:** every video has a local file and `raw/` exists in two places.
+
+---
+
+## T9 — Absorb the theme and restyle from scratch
+
+**Type:** infrastructure · **Size:** large · **Anthony's call (2026-09-08)**
+
+Working across `themes/whiteplain/layouts/` and `/layouts/` means a constant two-place comparison: to change anything you first have to work out whether the file is overridden, theme-owned, or new. Anthony's proposal is to stop straddling — **copy the theme's templates into `/layouts/` and delete `themes/whiteplain`**, so there is one place to look.
+
+This is cheap to do, because `themes/whiteplain` is **not a submodule** — it's ordinary tracked files (see T0). Absorbing it is a `git mv` and a `theme =` line removed from `config.toml`, not a vendoring exercise.
+
+Current split, for whoever picks this up:
+
+| | files |
+|---|---|
+| overriding a theme file | `baseof.html` · `list.html` · `single.html` · `head.html` · `head_custom.html` |
+| new, no theme equivalent | `rss.xml` · `google_fonts.html` · `project-meta.html` · `work-card.html` · `image/hero.html` |
+| still theme-owned | `404.html` · `terms.html` · `footer.html` · `header.html` · `share.html` · `social.html` · `toc.html` · `about.html` · `archives.html` |
+
+The trade being accepted: upstream `taikii/whiteplain` fixes stop arriving. Given `single.html` is already a full copy and the styling is about to be rewritten anyway (see the mobile and slideshow work), that upstream link is close to worthless already.
+
+**Done when:** `themes/` is gone, `config.toml` names no theme, and the site builds byte-identically to before the move.
 
 ---
 
