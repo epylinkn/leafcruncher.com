@@ -1,15 +1,45 @@
-<!--
-    @class: figure class
-    @link: href
-    @src: image src
-    @alt: image alt
-    @caption: figure caption
-    @title: figure caption
--->
+{{/*
+    @class:    figure class
+    @link:     href
+    @src:      image src — a page-bundle resource, or any path
+    @alt:      image alt
+    @caption:  figure caption
+    @title:    figure caption
+    @credit:   photo credit
 
+    When src resolves to a page resource, a srcset is generated so a phone
+    downloads a phone-sized file instead of the full-width one. Sources
+    already narrower than a breakpoint are not upscaled — there is no detail
+    to invent, and several works here ship at under 1200px wide.
+    Anything that doesn't resolve (a /static path, a missing file) falls back
+    to a plain img, so a broken lookup degrades instead of failing the build.
+*/}}
+{{- $src := .Get "src" }}
+{{- $res := "" }}
+{{- with .Page.Resources.GetMatch $src }}{{ $res = . }}{{ end }}
+{{- $alt := cond (ne (.Get "alt") "") (.Get "alt") (.Get "caption") }}
 <figure class="hero {{ .Get "class" }}">
     {{ with .Get "link" }}<a href="{{ . }}">{{ end }}
-        <img src="{{ .Get "src" }}" {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" }}{{ end }}"{{ end }} />
+    {{- if $res }}
+        {{- $widths := slice 480 960 1440 1920 }}
+        {{- $srcset := slice }}
+        {{- range $widths }}
+            {{- if ge $res.Width . }}
+                {{- $r := $res.Resize (printf "%dx webp q82" .) }}
+                {{- $srcset = $srcset | append (printf "%s %dw" $r.RelPermalink $r.Width) }}
+            {{- end }}
+        {{- end }}
+        {{- $srcset = $srcset | append (printf "%s %dw" $res.RelPermalink $res.Width) }}
+        <img src="{{ $res.RelPermalink }}"
+             srcset="{{ delimit $srcset ", " }}"
+             sizes="(max-width: 900px) 100vw, 900px"
+             width="{{ $res.Width }}" height="{{ $res.Height }}"
+             loading="lazy" decoding="async"
+             {{ with $alt }}alt="{{ . }}"{{ end }} />
+    {{- else }}
+        <img src="{{ $src }}" loading="lazy" decoding="async"
+             {{ with $alt }}alt="{{ . }}"{{ end }} />
+    {{- end }}
     {{ if .Get "link" }}</a>{{ end }}
     {{ if or (or (.Get "title") (.Get "caption")) (.Get "attr") (.Get "credit") }}
     <figcaption>
@@ -23,7 +53,7 @@
             {{ .Get "attr" }}
         {{ if .Get "attrlink" }}</a> {{ end }}
         </p> {{ end }}
-        
+
         {{ if .Get "credit" }}
             <small class="credit">photo: {{ .Get "credit" }}</small>
         {{ end }}

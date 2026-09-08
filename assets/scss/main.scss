@@ -74,3 +74,237 @@ dl.project-meta {
   text-transform: lowercase;
   opacity: 0.65;
 }
+
+// ---------------------------------------------------------------------------
+// Mobile
+//
+// The theme ships one narrow `max-width: 768px` block that only sets widths to
+// 98% — which leaves text touching both edges — and nothing else. These rules
+// give the page real gutters, stop the two-column listing layout from being
+// squeezed into half a phone screen, and loosen type for reading at arm's
+// length. Loaded after the theme, so they win.
+// ---------------------------------------------------------------------------
+
+@media screen and (max-width: 768px) {
+  .site-header,
+  .site-header-bottom,
+  .main,
+  .breadcrumb,
+  .site-footer {
+    width: 100%;
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+    box-sizing: border-box;
+  }
+
+  body {
+    line-height: 1.45;
+  }
+
+  .site-title {
+    font-size: 2.1rem;
+  }
+
+  .site-navi {
+    flex-wrap: wrap;
+    row-gap: 0.25rem;
+  }
+
+  .site-navi-items {
+    font-size: 1.05em;
+  }
+
+  .site-navi-items li {
+    padding-left: 0;
+    padding-right: 1rem;
+  }
+
+  // The listing's image/text pair is a 50/50 flex row on desktop. At phone
+  // width that gives each side ~160px, so stack them instead.
+  .portrait {
+    display: block;
+  }
+
+  .portrait > div {
+    width: 100%;
+  }
+
+  .portrait > div:first-child {
+    margin-right: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  .article-title {
+    font-size: 1.6rem;
+    line-height: 1.25;
+  }
+
+  figure.hero {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  // Wide content must scroll inside itself rather than widening the page.
+  .article pre,
+  .article table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+}
+
+// A bare URL in prose is one unbreakable word and pushes the whole page wider
+// than the screen (the swimming-pool page does this). Let long tokens break
+// rather than making every page scroll sideways. Applies at all widths — a
+// narrow desktop window has the same problem.
+.article,
+dl.project-meta {
+  overflow-wrap: anywhere;
+}
+
+// ---------------------------------------------------------------------------
+// Lightbox
+// ---------------------------------------------------------------------------
+
+figure.hero.is-zoomable img {
+  cursor: zoom-in;
+}
+
+html.lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.94);
+  // iOS: keep the viewer clear of the home indicator and notch.
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+    env(safe-area-inset-bottom) env(safe-area-inset-left);
+  animation: lightbox-in 0.16s ease-out;
+
+  &.no-motion {
+    animation: none;
+  }
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 3.25rem 0.75rem 4rem;
+  box-sizing: border-box;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  // The theme sets `.article img { width: 100% }`; don't inherit that here.
+  border: none;
+  padding: 0;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  z-index: 1;
+  background: none;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.75;
+  // Comfortable tap target on touch screens.
+  min-width: 44px;
+  min-height: 44px;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+  }
+}
+
+.lightbox-close {
+  top: 0.35rem;
+  right: 0.5rem;
+  font-size: 2.4rem;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  padding: 0 0.75rem;
+}
+
+.lightbox-prev {
+  left: 0.1rem;
+}
+
+.lightbox-next {
+  right: 0.1rem;
+}
+
+.lightbox-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  gap: 0.9rem;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom));
+  color: #fff;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.lightbox-counter {
+  opacity: 0.6;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.lightbox-caption {
+  opacity: 0.85;
+}
+
+@media screen and (max-width: 768px) {
+  // Arrows sit under the thumb-unfriendly middle of the screen on a phone;
+  // swiping is the primary gesture there, so shrink them out of the way.
+  .lightbox-prev,
+  .lightbox-next {
+    font-size: 2rem;
+    opacity: 0.5;
+  }
+
+  .lightbox-stage {
+    padding: 3rem 0.4rem 3.5rem;
+  }
+}
