@@ -4,6 +4,7 @@ date: 2018-12-15
 categories: [joylabo]
 tags: [interactive]
 location: brooklyn, new york
+role: "artist & engineer"
 authorship: collective
 homelayout: landscape
 homeimage: /img/projects/light-arcade.png

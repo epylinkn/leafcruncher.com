@@ -7,6 +7,7 @@ location: bombay beach, salton sea, california
 link: https://joylabo.studio/projects/100-tvs
 opened: 2020-02-07
 closed: 2020-04-05
+role: "artist & engineer"
 authorship: collective
 homelayout: landscape
 homeimage: /img/projects/portal.jpg

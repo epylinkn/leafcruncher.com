@@ -4,6 +4,7 @@ date: 2018-12-01
 tags: [interactive]
 location: brooklyn, new york
 venue: the paper box
+role: "artist"
 authorship: mine
 homelayout: portrait
 homeimage: /img/projects/in-dreams.webp

@@ -4,6 +4,7 @@ date: 2018-08-01
 tags: [interactive]
 location: queens, new york
 event: MakerFaire 2018
+role: "artist & engineer"
 authorship: mine
 draft: false
 ---

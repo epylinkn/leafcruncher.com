@@ -6,6 +6,7 @@ tags: [interactive]
 location: brooklyn, new york
 venue: "luxury escapism: VR spa"
 opened: 2019-10-15
+role: "artist & engineer"
 authorship: collective
 homelayout: landscape
 homeimage: /img/projects/cloud-bathroom.jpg

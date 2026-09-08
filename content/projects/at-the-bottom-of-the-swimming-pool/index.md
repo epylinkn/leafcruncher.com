@@ -8,6 +8,7 @@ venue: echigo-tsumari art triennale
 link: https://www.echigo-tsumari.jp/en/art/artwork/at-the-bottom-of-the-swimming-pool/
 opened: 2022-07-31
 closed: 2022-11-13
+role: "artist & engineer"
 authorship: collective
 homelayout: portrait
 homeimage: /img/projects/at-the-bottom-of-the-swimming-pool.webp

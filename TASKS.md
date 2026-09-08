@@ -127,17 +127,40 @@ It's the best-documented page in the repo: per-image photo credits, a named lead
 
 ---
 
-## T8 — Role and authorship: make the site able to say what Anthony did ⚠️ MOSTLY DONE (2026-09-08)
+## T8 — Role and authorship: make the site able to say what Anthony did ✅ DONE (2026-09-08)
 
 **Type:** consistency · **Pairs with:** T1 · **Unblocks:** T3, T4 · **Size:** medium
 
 Shipped in `9c7de15`. The scheme changed in the doing: `authorship` has **four** values — `mine` · `collective` · `commission` · `collaboration` — collapsing into two display tiers, "works" and "commissions & collaborations". This splits the old `supporting` into paid-contractor work and someone-else-led work, and settles this task's open question: prismatic light is a `commission`, matching Anthony's own "more a contractor".
 
-**Still open — needs Anthony:**
+**Closed out.** Every one of the 8 published works now declares a role, so a
+supporting credit reads as precision rather than apology — which was the point.
 
-- `role` is set on only **3 of 15** works (`facing-the-fearbeast`, `hubot`, `prismatic-light`) — the only ones with a sourced role. The other 12 are blank because a role is a claim about what Anthony did and must not be guessed. **This defeats the point of the task:** role was meant to be universal so that a supporting credit reads as precision rather than apology. With only the commissioned works carrying one, it still reads as apology. Fill in the remaining 12.
-- `operation-criminal-cryptokitty` is absent from the table below (it covers 14 of 15 works) — `authorship: TODO(anthony)`.
-- `prismatic-light` — `lead_artist: "TODO(anthony): creative design credit"`. Someone else did the creative design; the name was deliberately not invented.
+| work | role |
+|---|---|
+| light arcade · cloud bathroom · PORTAL · at the bottom of the swimming pool | artist & engineer |
+| search divides us | artist & engineer |
+| IN DREAMS | artist |
+| COFFEETHEQUE | artist, engineer & sound |
+| facing the fearbeast | interactive systems design, lighting design, installation & programming |
+| hubot | technical PM & hardware engineering |
+| prismatic light | everything minus the creative design |
+
+The role field is deliberately a short credit line, not a CV. Anthony also does
+fabrication, planning, budgeting, composition and performance across these
+works; that texture belongs in body prose on the pages where it is
+distinctive, not in the credit.
+
+The 5 remaining works — `production-of-the-other`, `operation-criminal-cryptokitty`,
+`knob`, `human-car-wash`, `the-last-dance` — are unwritten drafts. They take a
+role when they get written; see T4 and T6.
+
+Credits settled since: `operation: criminal cryptokitty` is co-authored with
+Jenna Xu (`authorship: mine` plus the new `collaborators` list); `prismatic
+light`'s creative design was puppylove.agency.
+
+**Still open:** `search divides us` is a four-person work and the other three
+are named nowhere in this repo. `collaborators` now exists to hold them.
 
 The reason `hubot`, `prismatic light` and `facing the fearbeast` have sat unpublished is not that they're unfinished — it's that **the site has no way to state a role.** Every page implicitly claims full authorship, so publishing a supporting-role work would over-claim, and the accurate version isn't currently sayable.
 

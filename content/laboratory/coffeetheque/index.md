@@ -1,6 +1,7 @@
 ---
 title: "COFFEETHEQUE"
 date: 2019-02-01
+role: "artist, engineer & sound"
 authorship: mine
 homelayout: landscape
 homeimage: /img/projects/coffeetheque.webp
