@@ -69,7 +69,7 @@ Each project/laboratory item should have its own directory with an `index.md` fi
 ```yaml
 title, date, categories, tags, location, venue, event, link,
 opened, closed, role, authorship, lead_artist, lead_artist_link,
-homelayout, homeimage, homedescription, draft
+collaborators, homelayout, homeimage, homedescription, draft
 ```
 
 `role` is free text stating what Anthony did — the site says it rather than implying full authorship. It is **not yet set on every work**: only where a source exists (`facing-the-fearbeast`, `hubot`, `prismatic-light`). The rest are blank pending Anthony, because a role is a claim about what he did and must not be guessed.
@@ -81,7 +81,9 @@ homelayout, homeimage, homedescription, draft
 | works | `mine`, `collective` |
 | commissions & collaborations | `commission`, `collaboration` |
 
-A work with no `authorship` falls into **works**, so nothing silently disappears from the listing. `lead_artist` names whoever led where that wasn't Anthony, with an optional `lead_artist_link`.
+A work with no `authorship` falls into **works**, so nothing silently disappears from the listing.
+
+`lead_artist` names whoever led where that wasn't Anthony, with an optional `lead_artist_link`. Its rendered label follows `authorship`: **artist** on a `collaboration` (someone else's work that Anthony contributed to), **creative** on a `commission` (someone else directed, Anthony built). `collaborators` is a list, for a work that is Anthony's but not his alone — co-authors, not a lead — and renders as "with".
 
 `homeimage` / `homelayout` / `homedescription` drive the `/projects/` listing (see `layouts/_default/list.html`); a page without them renders as a bare title with no thumbnail.
 

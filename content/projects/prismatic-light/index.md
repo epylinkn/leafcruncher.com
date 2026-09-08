@@ -6,7 +6,7 @@ location: san francisco, ca
 event: GitHub Universe Conference 2022
 role: "everything minus the creative design"
 authorship: commission
-lead_artist: "TODO(anthony): creative design credit"
+lead_artist: puppylove.agency
 draft: true
 ---
 

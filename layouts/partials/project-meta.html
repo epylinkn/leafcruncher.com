@@ -10,17 +10,28 @@
 */}}
 {{- $role := .Params.role }}
 {{- $lead := .Params.lead_artist }}
+{{- $collaborators := .Params.collaborators }}
 {{- $location := .Params.location }}
 {{- $venue := .Params.venue }}
 {{- $event := .Params.event }}
 {{- $opened := .Params.opened }}
 {{- $closed := .Params.closed }}
 {{- $link := .Params.link }}
-{{- if or $role $lead $location $venue $event $opened $closed $link }}
+{{- if or $role $lead $collaborators $location $venue $event $opened $closed $link }}
 <dl class="project-meta">
   {{- with $lead }}
-  <dt>artist</dt>
+  {{/*
+    On a collaboration someone else led the work; on a commission someone else
+    directed it and Anthony built it. "artist" would be wrong for the second,
+    so the label follows the authorship rather than being fixed.
+  */}}
+  <dt>{{ if eq $.Params.authorship "commission" }}creative{{ else }}artist{{ end }}</dt>
   <dd>{{ if $.Params.lead_artist_link }}<a href="{{ $.Params.lead_artist_link }}">{{ . }}</a>{{ else }}{{ . }}{{ end }}</dd>
+  {{- end }}
+  {{- with $collaborators }}
+  {{/* Co-authors, where the work is Anthony's but not his alone. */}}
+  <dt>with</dt>
+  <dd>{{ delimit . ", " " & " }}</dd>
   {{- end }}
   {{- with $role }}
   <dt>my role</dt>
