@@ -2,7 +2,7 @@
 
 Work queue for leafcruncher.com. Each task is scoped to be picked up independently by Claude Code.
 
-Derived from a full audit of the live site vs. this repo (2026-08-27). The live site serves **7** works; this repo contains **15**; `README.md` names **6** more with no page at all.
+Derived from a full audit of the live site vs. this repo (2026-08-27). The live site serves **8** works — 7 under `/projects/`, plus COFFEETHEQUE under `/laboratory/`; this repo contains **15**; `README.md` names **6** more with no page at all.
 
 **Ground rules**
 
@@ -14,63 +14,35 @@ Derived from a full audit of the live site vs. this repo (2026-08-27). The live 
 
 ---
 
-## T0 — Make publishing a non-event
+## T0 — Make publishing a non-event ✅ DONE (2026-09-08)
 
-**Type:** infrastructure · **Do first** · **Size:** small
+**Type:** infrastructure · **Size:** small
 
-**Verified 2026-09-08.** The deploy is broken, and here is the proof:
+Diagnosis kept below, because the failure mode is worth recognising again.
+
+**What was found (2026-09-08).** The deploy was broken, and this was the proof:
 
 - `content/projects/facing-the-fearbeast/` **is present on `origin/master`** on GitHub. The work was written, committed, *and pushed*.
-- It is **not on the live site** — absent from `leafcruncher.com/projects/`, from `/archives/`, and from `sitemap.xml`.
+- It was **not on the live site** — absent from `leafcruncher.com/projects/`, from `/archives/`, and from `sitemap.xml`.
 - There is **no `.github/workflows/`** — not in the local checkout and not on `origin/master` (GitHub returns 404 for that path). No `netlify.toml`, `vercel.json`, `CNAME`, Makefile or deploy script either. `public/` is built locally and gitignored.
 
-So pushing to GitHub does **not** publish this site, whatever it used to do. A finished page has been sitting on `master`, publicly, unpublished, for roughly a year. Writing was never the bottleneck — and neither was pushing.
+So pushing to GitHub did **not** publish this site, whatever it used to do. A finished page had been sitting on `master`, publicly, unpublished, for roughly a year. Writing was never the bottleneck — and neither was pushing.
 
-**The host is Netlify** — project `astounding-paletas-999c32`, domain `leafcruncher.com`, "Deploys from GitHub with Hugo". Build settings live in the Netlify UI; there is no `netlify.toml` in the repo, which is why nothing about the deploy is visible from here.
+**The host is Netlify** — project `astounding-paletas-999c32`, domain `leafcruncher.com`, "Deploys from GitHub with Hugo". Build settings lived only in the Netlify UI; there was no `netlify.toml` in the repo, which is why nothing about the deploy was visible from here. There is one now.
 
-**The last production deploy is `master@6c1e787` — "add claude config", Sep 14 2025, Published.**
+**The last production deploy was `master@6c1e787` — "add claude config", Sep 14 2025, Published.**
 
-That is the whole story. `.git/COMMIT_EDITMSG` still holds *"rough AI draft: fearbeast"*, meaning the fearbeast commit was authored **after** `6c1e787`. It reached GitHub. Netlify has not shipped anything since. The pipeline didn't break loudly — it just stopped, and there was no reason to notice.
+That is the whole story. `.git/COMMIT_EDITMSG` still holds *"rough AI draft: fearbeast"*, meaning the fearbeast commit was authored **after** `6c1e787`. It reached GitHub. Netlify had not shipped anything since. The pipeline didn't break loudly — it just stopped, and there was no reason to notice.
 
-**Do:**
+**Resolved.**
 
-1. Open the Netlify **Deploys** tab and find what happened after `6c1e787`. Expect one of: a failed build, auto-publish switched off, builds stopped/paused, or exhausted build minutes. Read the build log rather than guessing.
-2. Retry the deploy at current `master`.
+- **Host:** Netlify, project `astounding-paletas-999c32`, domain leafcruncher.com, deploying from GitHub with Hugo.
+- **Last good deploy before the outage:** `master@6c1e787` — "add claude config", Sep 14 2025.
+- **Root cause:** the Hugo version was unpinned. Netlify's Hugo predated 0.128.0, so `css.Sass` in `layouts/partials/head_custom.html` did not exist and every build after `6c1e787` failed. Netlify kept serving the last good deploy.
+- **Fixed in:** `7bdebcf` (work queue) · `5ee14f5` (`netlify.toml` pinning `HUGO_VERSION = "0.150.0"`, submodule debris removed, publish path documented) · `6712ad2` (`.node-version` 22.14.0).
+- **Verified:** `facing-the-fearbeast` live at 200, linked from `/projects/`, present in `sitemap.xml`; `main.min.css` served, proving `css.Sass` compiled on Netlify.
 
-   **Cause found (2026-09-07), and it is neither of the two originally guessed here.**
-
-   The unpublished commit `4cca7f5` didn't only add fearbeast — it also changed
-   `layouts/partials/head_custom.html` from `resources.ToCSS` to `css.Sass`.
-   Those two are mutually exclusive across Hugo **0.128.0**: `resources.ToCSS`
-   was removed in that release and `css.Sass` was added in it. Netlify built
-   `6c1e787` (ToCSS) successfully, so Netlify's Hugo is older than 0.128.0 —
-   and the next push, carrying `css.Sass`, could not build. Netlify kept
-   serving the last good deploy and said nothing.
-
-   Two hypotheses previously recorded here are **disproven**, kept so nobody
-   re-chases them:
-   - ~~`.gitmodules` is 0 bytes, so CI gets no theme.~~ `themes/whiteplain` is
-     **not a submodule** — `git ls-tree master themes/` returns a tree and
-     `git ls-files themes/` lists 45 ordinary tracked files. A clean clone gets
-     the whole theme. The empty `.gitmodules` and the stale `.git/config`
-     `submodule.themes/whiteplain` entry were leftover debris; both removed.
-   - ~~Hugo version drift will break these templates.~~ Backwards: the site
-     builds cleanly on 0.150.0 and it is the *old* pin that breaks it.
-3. Commit a `netlify.toml` pinning the version, so the build is reproducible
-   and reviewable in-repo. **The pin must be >= 0.128.0 and extended** — the
-   `HUGO_VERSION = "0.85.0"` originally written here would have kept the site
-   broken, since 0.85.0 predates `css.Sass` by three years:
-   ```toml
-   [build]
-     command = "hugo --gc --minify"
-     publish = "public"
-   [build.environment]
-     HUGO_VERSION = "0.150.0"
-   ```
-4. Netlify also warns the project is on **Node.js 16** — worth bumping while you're in there, though Hugo doesn't need it.
-5. Replace "Build for production with `hugo`" in `CLAUDE.md` with the real path: push to `master` → Netlify builds → live.
-
-**Done when:** a push to `master` reaches leafcruncher.com, and `facing-the-fearbeast` is live as proof.
+**This failure is silent** — a failed build leaves the previous deploy serving, so the site looks fine. To detect a recurrence, compare Netlify's last deploy hash against `origin/master` HEAD; they should match. A doc-only push is a valid canary.
 
 ---
 
