@@ -159,8 +159,8 @@ Credits settled since: `operation: criminal cryptokitty` is co-authored with
 Jenna Xu (`authorship: mine` plus the new `collaborators` list); `prismatic
 light`'s creative design was puppylove.agency.
 
-**Still open:** `search divides us` is a four-person work and the other three
-are named nowhere in this repo. `collaborators` now exists to hold them.
+`search divides us` is a four-person work; the other three are asha, kathy and
+keerthana, now carried in `collaborators`.
 
 The reason `hubot`, `prismatic light` and `facing the fearbeast` have sat unpublished is not that they're unfinished — it's that **the site has no way to state a role.** Every page implicitly claims full authorship, so publishing a supporting-role work would over-claim, and the accurate version isn't currently sayable.
 

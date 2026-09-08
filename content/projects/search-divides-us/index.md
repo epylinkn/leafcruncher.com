@@ -6,6 +6,7 @@ location: queens, new york
 event: MakerFaire 2018
 role: "artist & engineer"
 authorship: mine
+collaborators: ["asha", "kathy", "keerthana"]
 draft: false
 ---
 
