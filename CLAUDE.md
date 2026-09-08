@@ -8,17 +8,23 @@ This is a Hugo static site for leafcruncher.com, a personal portfolio website sh
 
 ## Development Commands
 
-Since Hugo is not installed in the current PATH, you'll need to install it first:
 ```bash
-# Install Hugo (macOS)
+# Install Hugo (macOS) — must be the extended build
 brew install hugo
 
 # Serve the site locally for development
 hugo server
 
-# Build the site for production
-hugo
+# Build the site locally, the same way Netlify does
+hugo --gc --minify
 ```
+
+**Hugo must be extended and >= 0.128.0.** `layouts/partials/head_custom.html`
+compiles `assets/scss/main.scss` with `css.Sass`, which requires the extended
+build and did not exist before 0.128.0. `netlify.toml` pins the CI version;
+keep it and your local version in step.
+
+Building locally does **not** publish. See Deploying below.
 
 ## Architecture
 
@@ -77,11 +83,28 @@ Note: as of this writing `location`, `venue`, `event`, and `link` are **not rend
 - Body copy is deliberately lowercase. Preserve the voice; don't regularize it.
 - Never invent project facts — venues, dates, collaborators, materials. Use `TODO(anthony)` instead of a plausible guess.
 - `content/projects/search-divides-us/index.md` is the reference structure for a fully documented project; `content/projects/facing-the-fearbeast/index.md` is the reference for crediting photographers and stating your role on a collaboration.
-- `themes/whiteplain` is a git submodule (`taikii/whiteplain`) — override templates in `/layouts/`, don't edit the theme.
+- `themes/whiteplain` is vendored (`taikii/whiteplain`, copied in as ordinary tracked files, not a submodule) — override templates in `/layouts/`, don't edit the theme.
 
 ## Development Workflow
 
 1. Create content in appropriate `/content/` subdirectory
 2. Use the image optimization script for any images: `./scripts/optimize-image.sh input_image.jpg`
 3. Test locally with `hugo server`
-4. Build for production with `hugo`
+4. Push to `master` — publishing is step 4, not a separate ritual
+
+## Deploying
+
+Push to `master` → Netlify builds → live at leafcruncher.com. There is no
+manual build or upload step, and `public/` is gitignored; never commit it.
+
+The host is Netlify, project `astounding-paletas-999c32`. Build settings live
+in `netlify.toml` (build command, publish dir, `HUGO_VERSION`) — change them
+there, in a commit, rather than in the Netlify UI, so the deploy stays
+reviewable in-repo.
+
+**A failed Netlify build is silent.** Netlify keeps serving the last good
+deploy and nothing about the site looks wrong. That is exactly how a finished
+page sat unpublished on `master` for a year: the last successful deploy was
+`6c1e787` (Sep 14 2025), and the very next commit changed
+`resources.ToCSS` → `css.Sass`, which the older Hugo on Netlify did not have.
+After pushing, confirm the change is actually live — don't assume.

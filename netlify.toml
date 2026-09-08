@@ -1,0 +1,22 @@
+# Build settings for leafcruncher.com (Netlify project astounding-paletas-999c32).
+# Kept in-repo so the deploy is reviewable here rather than only in the Netlify UI.
+
+[build]
+  command = "hugo --gc --minify"
+  publish = "public"
+
+[build.environment]
+  # Must be >= 0.128.0 and extended.
+  #
+  # layouts/partials/head_custom.html compiles assets/scss/main.scss with
+  # css.Sass, which requires the extended build and did not exist before
+  # 0.128.0 (it replaced resources.ToCSS, removed in that same release).
+  # Netlify was on an older Hugo, which is why every push after 6c1e787
+  # failed to build and the site silently froze on Sep 14 2025.
+  #
+  # 0.150.0 matches the version this site is developed against locally.
+  HUGO_VERSION = "0.150.0"
+
+  # The build does not use Node (no package.json); this only moves the
+  # project off the end-of-life Node 16 that Netlify warns about.
+  NODE_VERSION = "22"

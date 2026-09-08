@@ -35,16 +35,37 @@ That is the whole story. `.git/COMMIT_EDITMSG` still holds *"rough AI draft: fea
 **Do:**
 
 1. Open the Netlify **Deploys** tab and find what happened after `6c1e787`. Expect one of: a failed build, auto-publish switched off, builds stopped/paused, or exhausted build minutes. Read the build log rather than guessing.
-2. Retry the deploy at current `master`. If it fails, the two likeliest causes are both known:
-   - **`.gitmodules` is 0 bytes** while `.git/config` does define the `whiteplain` submodule. A clean CI clone gets no theme and the build dies. Repair it with `git submodule add https://github.com/taikii/whiteplain.git themes/whiteplain` (or hand-write the `.gitmodules` entry) and commit.
-   - **Hugo version drift.** The site was built with 0.85.0. Netlify's default is far newer and will break these templates.
-3. Commit a `netlify.toml` pinning both, so the build is reproducible and reviewable in-repo:
+2. Retry the deploy at current `master`.
+
+   **Cause found (2026-09-07), and it is neither of the two originally guessed here.**
+
+   The unpublished commit `4cca7f5` didn't only add fearbeast — it also changed
+   `layouts/partials/head_custom.html` from `resources.ToCSS` to `css.Sass`.
+   Those two are mutually exclusive across Hugo **0.128.0**: `resources.ToCSS`
+   was removed in that release and `css.Sass` was added in it. Netlify built
+   `6c1e787` (ToCSS) successfully, so Netlify's Hugo is older than 0.128.0 —
+   and the next push, carrying `css.Sass`, could not build. Netlify kept
+   serving the last good deploy and said nothing.
+
+   Two hypotheses previously recorded here are **disproven**, kept so nobody
+   re-chases them:
+   - ~~`.gitmodules` is 0 bytes, so CI gets no theme.~~ `themes/whiteplain` is
+     **not a submodule** — `git ls-tree master themes/` returns a tree and
+     `git ls-files themes/` lists 45 ordinary tracked files. A clean clone gets
+     the whole theme. The empty `.gitmodules` and the stale `.git/config`
+     `submodule.themes/whiteplain` entry were leftover debris; both removed.
+   - ~~Hugo version drift will break these templates.~~ Backwards: the site
+     builds cleanly on 0.150.0 and it is the *old* pin that breaks it.
+3. Commit a `netlify.toml` pinning the version, so the build is reproducible
+   and reviewable in-repo. **The pin must be >= 0.128.0 and extended** — the
+   `HUGO_VERSION = "0.85.0"` originally written here would have kept the site
+   broken, since 0.85.0 predates `css.Sass` by three years:
    ```toml
    [build]
      command = "hugo --gc --minify"
      publish = "public"
    [build.environment]
-     HUGO_VERSION = "0.85.0"
+     HUGO_VERSION = "0.150.0"
    ```
 4. Netlify also warns the project is on **Node.js 16** — worth bumping while you're in there, though Hugo doesn't need it.
 5. Replace "Build for production with `hugo`" in `CLAUDE.md` with the real path: push to `master` → Netlify builds → live.
@@ -70,7 +91,7 @@ Meanwhile the frontmatter already carries `location`, `venue`, `event`, and `lin
 **Do:**
 
 1. Add `layouts/partials/project-meta.html` rendering, when present: `location`, `venue`, `event`, `opened`, `closed`, and `link` (as a labelled outbound link).
-2. Override `layouts/_default/single.html` (do not edit the theme submodule — `themes/whiteplain` is a git submodule pointing at `taikii/whiteplain`) and call the partial after `article-meta`.
+2. Override `layouts/_default/single.html` (do not edit the theme — `themes/whiteplain` is vendored from `taikii/whiteplain` as ordinary tracked files, and edits there are invisible to anyone reading `/layouts/`) and call the partial after `article-meta`.
 3. Normalize frontmatter across all 15 `content/**/index.md` to this schema:
 
    ```yaml
