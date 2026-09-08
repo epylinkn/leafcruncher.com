@@ -3,15 +3,15 @@ title: "Facing the Fearbeast"
 date: "2022-08-28"
 tags: [installation, burning man, sound design, lighting]
 location: "Black Rock City, Nevada"
+event: "Burning Man 2022 — Waking Dreams"
+role: "interactive systems design, lighting design, installation & programming"
+authorship: collaboration
+lead_artist: "Tigre Mashaal-Lively"
+lead_artist_link: https://sfreporter.com/coverstories/afraid-2022-08-17/
 draft: false
 ---
 
 **Facing the Fearbeast** was a massive multimedia sculpture created for Burning Man 2022, whose theme was *Waking Dreams*. This 7,000-pound installation featured a towering black monster with multiple eyes confronting a small child, exploring themes of inner demons, traumas, and collective healing.
-
-**artist**: [Tigre Mashaal-Lively](https://sfreporter.com/coverstories/afraid-2022-08-17/)\
-**my role**: interactive systems design, lighting design, installation & programming\
-**location**: Black Rock City, Nevada\
-**event**: Burning Man 2022 - *Waking Dreams*
 
 The piece represented moving past "the false narrative of the Hero Alone" and instead embracing collective approaches to confronting personal fears and mental health challenges. My contributions focused on designing the interactive experience: programming the responsive audio cross-fading systems, creating dynamic lighting behaviors, and implementing the technical infrastructure that allowed participants to trigger and shape the sculpture's audio-visual responses, transforming it into a truly interactive environment for engaging with one's fearbeasts.
 

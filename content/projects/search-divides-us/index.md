@@ -3,10 +3,11 @@ title: "search divides us"
 date: 2018-08-01
 tags: [interactive]
 location: queens, new york
-draft: False
+event: MakerFaire 2018
+authorship: mine
+draft: false
 ---
 
-**location**: MakerFaire 2018
 
 a museum exhibit that invites users to understand internet segregation, especially the role of algorithms and how they might silently reinforce existing racial biases in the society.
 

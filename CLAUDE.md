@@ -68,15 +68,24 @@ Each project/laboratory item should have its own directory with an `index.md` fi
 
 ```yaml
 title, date, categories, tags, location, venue, event, link,
-opened, closed, role, authorship, lead_artist,
+opened, closed, role, authorship, lead_artist, lead_artist_link,
 homelayout, homeimage, homedescription, draft
 ```
 
-`role` is set on **every** work, solo ones included — the site states what Anthony did rather than implying full authorship. `authorship` is one of `mine` · `collective` · `supporting`, and drives the two-tier grouping on `/projects/`. `lead_artist` names whoever led, where that wasn't Anthony. See T8 in `TASKS.md`.
+`role` is free text stating what Anthony did — the site says it rather than implying full authorship. It is **not yet set on every work**: only where a source exists (`facing-the-fearbeast`, `hubot`, `prismatic-light`). The rest are blank pending Anthony, because a role is a claim about what he did and must not be guessed.
+
+`authorship` is one of `mine` · `collective` · `commission` · `collaboration`. Four values, two displayed tiers on `/projects/`:
+
+| tier heading | authorship values |
+|---|---|
+| works | `mine`, `collective` |
+| commissions & collaborations | `commission`, `collaboration` |
+
+A work with no `authorship` falls into **works**, so nothing silently disappears from the listing. `lead_artist` names whoever led where that wasn't Anthony, with an optional `lead_artist_link`.
 
 `homeimage` / `homelayout` / `homedescription` drive the `/projects/` listing (see `layouts/_default/list.html`); a page without them renders as a bare title with no thumbnail.
 
-Note: as of this writing `location`, `venue`, `event`, and `link` are **not rendered by any template** — project pages hand-type their metadata into the body instead, which is why it's inconsistent across works. See T1 in `TASKS.md`.
+`layouts/partials/project-meta.html` renders `role`, `lead_artist`, `venue`, `event`, `location`, `opened`, `closed` and `link` on every work page, called from `layouts/_default/single.html`. Metadata belongs in frontmatter — do **not** hand-type a `**location**:` block into a body; that is what drifted out of sync before.
 
 ### House rules for project pages
 

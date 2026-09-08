@@ -4,11 +4,15 @@ date: 2022-07-30
 categories: [joylabo]
 tags: [installation]
 location: tokamachi, niigata, japan
+venue: echigo-tsumari art triennale
 link: https://www.echigo-tsumari.jp/en/art/artwork/at-the-bottom-of-the-swimming-pool/
+opened: 2022-07-31
+closed: 2022-11-13
+authorship: collective
 homelayout: portrait
 homeimage: /img/projects/at-the-bottom-of-the-swimming-pool.webp
 homedescription: "at the bottom of the swimming pool invites viewers to descend, play and listen. piano notes mix with field recordings, sketching sonic pathways for brief contemplation. a tree with wings grows from the interactive sculpture. blank leaves and refracted sound offer an empty canvas of flattened time."
-draft: False
+draft: false
 ---
 
 {{< image/hero src="pool-piano.webp" alt="pool piano" credit="kioku keizo" >}}
@@ -16,10 +20,6 @@ draft: False
 **at the bottom of the swimming pool** invites viewers to descend, play and listen.
 
 piano notes mix with field recordings, sketching sonic pathways for brief contemplation. a tree with wings grows from the interactive sculpture. blank leaves and refracted sound offer an empty canvas of flattened time.
-
-**location**: [echigo-tsumari art triennale](https://www.echigo-tsumari.jp/en/visit/), 2021\
-**open**: jul 31, 2022\
-**close**: nov 13, 2022
 
 {{< image/hero src="0001.webp" alt="pool piano" credit="mamiko myakoshi" >}}
 {{< image/hero src="0003.webp" alt="pool piano" credit="mamiko myakoshi" >}}

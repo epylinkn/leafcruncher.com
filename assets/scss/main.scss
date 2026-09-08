@@ -28,3 +28,49 @@ figure {
     padding-bottom: 1rem;
   }
 }
+
+// Frontmatter-driven metadata block on a work page, replacing the
+// hand-typed "**location**: ..." lines that used to open each body.
+dl.project-meta {
+  margin: 0 0 2rem;
+  font-size: 0.9em;
+  line-height: 1.6;
+
+  dt {
+    float: left;
+    clear: left;
+    min-width: 6.5rem;
+    font-weight: 600;
+
+    &::after {
+      content: ":";
+    }
+  }
+
+  dd {
+    margin-left: 7.5rem;
+  }
+
+  @media (max-width: 480px) {
+    dt {
+      float: none;
+      min-width: 0;
+    }
+
+    dd {
+      margin-left: 0;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+// Tier headings on /projects/ — "works" vs "commissions & collaborations".
+.list-tier-title {
+  margin-top: 3rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid currentColor;
+  font-size: 1.1em;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  opacity: 0.65;
+}

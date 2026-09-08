@@ -1,0 +1,54 @@
+{{/*
+  Renders work metadata from frontmatter.
+
+  Replaces the hand-typed "**location**: ... / **open**: ... / **close**: ..."
+  blocks that used to live in page bodies, which drifted out of sync with the
+  frontmatter carrying the same facts. Every field is optional; nothing is
+  emitted for a work that doesn't declare it.
+
+  Dates are lowercased to match the site's voice.
+*/}}
+{{- $role := .Params.role }}
+{{- $lead := .Params.lead_artist }}
+{{- $location := .Params.location }}
+{{- $venue := .Params.venue }}
+{{- $event := .Params.event }}
+{{- $opened := .Params.opened }}
+{{- $closed := .Params.closed }}
+{{- $link := .Params.link }}
+{{- if or $role $lead $location $venue $event $opened $closed $link }}
+<dl class="project-meta">
+  {{- with $lead }}
+  <dt>artist</dt>
+  <dd>{{ if $.Params.lead_artist_link }}<a href="{{ $.Params.lead_artist_link }}">{{ . }}</a>{{ else }}{{ . }}{{ end }}</dd>
+  {{- end }}
+  {{- with $role }}
+  <dt>my role</dt>
+  <dd>{{ . }}</dd>
+  {{- end }}
+  {{- with $venue }}
+  <dt>venue</dt>
+  <dd>{{ . }}</dd>
+  {{- end }}
+  {{- with $event }}
+  <dt>event</dt>
+  <dd>{{ . }}</dd>
+  {{- end }}
+  {{- with $location }}
+  <dt>location</dt>
+  <dd>{{ . }}</dd>
+  {{- end }}
+  {{- with $opened }}
+  <dt>open</dt>
+  <dd>{{ dateFormat "Jan 2, 2006" . | lower }}</dd>
+  {{- end }}
+  {{- with $closed }}
+  <dt>close</dt>
+  <dd>{{ dateFormat "Jan 2, 2006" . | lower }}</dd>
+  {{- end }}
+  {{- with $link }}
+  <dt>link</dt>
+  <dd><a href="{{ . }}" rel="noopener">{{ . | replaceRE "^https?://(www\\.)?" "" | replaceRE "/$" "" }}</a></dd>
+  {{- end }}
+</dl>
+{{- end }}

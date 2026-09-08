@@ -4,6 +4,7 @@ date: 2018-12-01
 tags: [interactive]
 location: brooklyn, new york
 venue: the paper box
+authorship: mine
 homelayout: portrait
 homeimage: /img/projects/in-dreams.webp
 homedescription: "
@@ -12,7 +13,7 @@ without gravity\
 without endings\
 and, most importantly, without bruises.
 "
-draft: False
+draft: false
 ---
 
 {{< vimeo 313912251 >}}
@@ -26,6 +27,4 @@ for whatever reasons, i was never really excelled at skateboarding when I was yo
 
 deep down, this instrument explores my anxiety and shyness. and so i composed the music and designed the instrument to force myself to play loudly. here, it is performed live using a custom instrument designed to encourage large gestures, taking up space, and a joyful smile. the instrument was developed for _new instruments for musical expression_.
 
-performed live\
-**venue**: the paper box\
-**location**: brooklyn, ny
+performed live

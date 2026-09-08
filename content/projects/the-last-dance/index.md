@@ -4,7 +4,8 @@ date: 2019-06-20
 tags: [experience]
 location: new york, new york
 event: show all things show at itp camp
-draft: True
+authorship: mine
+draft: true
 ---
 
 TODO: add the slide deck presentation?

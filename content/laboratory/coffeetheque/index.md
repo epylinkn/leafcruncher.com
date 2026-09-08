@@ -1,9 +1,10 @@
 ---
 title: "COFFEETHEQUE"
 date: 2019-02-01
+authorship: mine
 homelayout: landscape
 homeimage: /img/projects/coffeetheque.webp
-draft: False
+draft: false
 ---
 
 {{< vimeo 468270333 >}}

@@ -3,7 +3,8 @@ title: "KNOB"
 date: 2017-12-01
 tags: [interactive]
 location: new york, new york
-draft: True
+authorship: mine
+draft: true
 ---
 
 just a big knobby knob.

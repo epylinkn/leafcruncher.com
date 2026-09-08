@@ -1,0 +1,52 @@
+{{/*
+  One work as it appears in a listing. Extracted from list.html so the
+  grouped /projects/ view and the plain paginated view of every other
+  section render a work identically.
+*/}}
+<article class="article">
+  <a href="{{ .Permalink | relURL }}" class="article-titles">
+    <h2 class="article-title">{{ .Title }}</h2>
+    {{ with .Params.subtitle }}<h3 class="article-subtitle">{{ . }}</h3>{{ end }}
+  </a>
+  <ul class="article-meta">
+    <li class="article-meta-date"><time>{{ .Date.Format (default "January 2, 2006" site.Params.dateFormat) }}</time></li>
+    {{- if .Params.categories }}
+    {{- range .Params.categories }}
+    <li class="article-meta-categories">
+      <a href="{{ "/" | relURL }}categories/{{ . | urlize }}/">
+        <i class="fas fa-folder"></i>
+        {{ . }}
+      </a>&nbsp;
+    </li>
+    {{- end }}
+    {{- end }}
+    {{- if .Params.tags }}
+    {{- range .Params.tags }}
+    <li class="article-meta-tags">
+      <a href="{{ "/" | relURL }}tags/{{ . | urlize }}/">
+        <i class="fas fa-tag"></i>
+        {{ . }}
+      </a>&nbsp;
+    </li>
+    {{- end }}
+    {{- end }}
+  </ul>
+
+  {{- if and (isset .Params "homeimage") .Params.homeimage }}
+    <div class="{{ .Params.homelayout }}">
+      <div>
+        <a href="{{ .Permalink | relURL }}">
+          <img src="{{ .Params.homeimage }}" class="article-image" />
+        </a>
+      </div>
+
+      {{- if and (isset .Params "homedescription") .Params.homedescription }}
+        <div class="article-content">
+          {{ .Params.homedescription }}
+        </div>
+      {{- end }}
+    </div>
+  {{- end }}
+
+  <div class="article-floatclear"></div>
+</article>

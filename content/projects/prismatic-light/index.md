@@ -2,11 +2,14 @@
 title: "prismatic light"
 date: "2022-11-10"
 tags: [interactive]
-location: san francisco, ca 
-draft: True
+location: san francisco, ca
+event: GitHub Universe Conference 2022
+role: "everything minus the creative design"
+authorship: commission
+lead_artist: "TODO(anthony): creative design credit"
+draft: true
 ---
 
-**location**: GitHub Universe Conference 2022
 
 <!-- TODO -->
 {{< vimeo 313934146 >}}

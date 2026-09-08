@@ -2,11 +2,13 @@
 title: "hubot"
 date: "2022-11-10"
 tags: [interactive]
-location: san francisco, ca 
-draft: True
+location: san francisco, ca
+event: GitHub Universe Conference 2022
+role: "technical PM & hardware engineering"
+authorship: commission
+draft: true
 ---
 
-**location**: GitHub Universe Conference 2022
 
 <!-- TODO -->
 {{< vimeo 313934146 >}}

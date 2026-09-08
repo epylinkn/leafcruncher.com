@@ -4,9 +4,10 @@ date: 2018-12-15
 categories: [joylabo]
 tags: [interactive]
 location: brooklyn, new york
+authorship: collective
 homelayout: landscape
 homeimage: /img/projects/light-arcade.png
-draft: False
+draft: false
 ---
 
 {{< image/hero src="light-arcade-hero.png" alt="light web" >}}

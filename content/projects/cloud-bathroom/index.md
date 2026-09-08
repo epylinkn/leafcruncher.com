@@ -4,10 +4,12 @@ date: 2019-10-15
 categories: [joylabo]
 tags: [interactive]
 location: brooklyn, new york
-link: https://www.echigo-tsumari.jp/en/art/artwork/at-the-bottom-of-the-swimming-pool/
+venue: "luxury escapism: VR spa"
+opened: 2019-10-15
+authorship: collective
 homelayout: landscape
 homeimage: /img/projects/cloud-bathroom.jpg
-draft: False
+draft: false
 ---
 
 {{< image/hero src="cloud-bathroom.jpg" alt="cloud bathroom" >}}
@@ -18,5 +20,3 @@ the interactive bathroom provides a private oasis within the spa, where the door
 
 {{< vimeo 370734458 >}}
 
-**location**: luxury escapism: VR spa, 2021\
-**open**: oct 15, 2019

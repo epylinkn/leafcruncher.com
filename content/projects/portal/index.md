@@ -5,9 +5,12 @@ categories: [joylabo]
 tags: [interactive]
 location: bombay beach, salton sea, california
 link: https://joylabo.studio/projects/100-tvs
-homeimage: /img/projects/portal.jpg
+opened: 2020-02-07
+closed: 2020-04-05
+authorship: collective
 homelayout: landscape
-draft: False
+homeimage: /img/projects/portal.jpg
+draft: false
 ---
 
 {{< image/hero src="portal-hero.jpg" alt="portal / there is still time" >}}
@@ -17,10 +20,6 @@ draft: False
 100 TVs were transported from a hotel in Times Square to be given a new life on the decaying shores of Bombay Beach. each TV was mounted inside of a structure designed by joylabo and networked together using raspberry pis. each day the portal captures the sunset and replays it slowly over the course of the remaining evening. 
 
 as part of the inaugural year of Mars College, the portal also functions as a creative canvas for its community. 
-
-**location**: [bombay beach, california](https://mars.college), 2020\
-**open**: feb 07, 2020\
-**close**: apr 05, 2020
 
 {{< image/hero src="portal.jpg" alt="portal detail" >}}
 {{< image/hero src="portal-build.jpg" alt="portal builid" >}}

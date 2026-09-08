@@ -1,60 +1,42 @@
 
 {{ define "main" }}
   <div class="main" role="main">
-    <section class="list {{ .Kind }}-list">
-      {{- $paginator := .Paginator }}
-      {{- range $paginator.Pages }}
-      <article class="article">
-        <a href="{{ .Permalink | relURL }}" class="article-titles">
-          <h2 class="article-title">{{ .Title }}</h2>
-          {{ with .Params.subtitle }}<h3 class="article-subtitle">{{ . }}</h3>{{ end }}
-        </a>
-        <ul class="article-meta">
-          <li class="article-meta-date"><time>{{ .Date.Format (default "January 2, 2006" $.Site.Params.dateFormat) }}</time></li>
-          {{- if .Params.categories }}
-          {{- range .Params.categories }}
-          <li class="article-meta-categories">
-            <a href="{{ "/" | relURL }}categories/{{ . | urlize }}/">
-              <i class="fas fa-folder"></i>
-              {{ . }}
-            </a>&nbsp;
-          </li>
-          {{- end }}
-          {{- end }}
-          {{- if .Params.tags }}
-          {{- range .Params.tags }}
-          <li class="article-meta-tags">
-            <a href="{{ "/" | relURL }}tags/{{ . | urlize }}/">
-              <i class="fas fa-tag"></i>
-              {{ . }}
-            </a>&nbsp;
-          </li>
-          {{- end }}
-          {{- end }}
-        </ul>
-        
-        {{- if and (isset .Params "homeimage") .Params.homeimage }}
-          <div class="{{ .Params.homelayout }}">
-            {{- if and (isset .Params "homeimage") .Params.homeimage }}
-              <div>
-                <a href="{{ .Permalink | relURL }}">
-                  <img src="{{ .Params.homeimage }}" class="article-image" />
-                </a>
-              </div>
-            {{- end }}
+    {{- if eq .Section "projects" }}
+      {{/*
+        /projects/ groups into two tiers so a page never implicitly claims
+        full authorship. `authorship` has four values collapsing into two
+        displayed groups; anything undeclared falls into "works" so a work
+        can never silently vanish from the listing.
+      */}}
+      {{- $pages := .Pages }}
+      {{- $commissioned := where $pages "Params.authorship" "in" (slice "commission" "collaboration") }}
+      {{- $own := complement $commissioned $pages }}
 
-            {{- if and (isset .Params "homedescription") .Params.homedescription }}
-              <div class="article-content">
-                {{ .Params.homedescription }}
-              </div>
-            {{- end }}
-          </div>
+      {{- with $own }}
+      <section class="list projects-list">
+        <h2 class="list-tier-title">works</h2>
+        {{- range . }}
+          {{ partial "work-card.html" . }}
         {{- end }}
-
-        <div class="article-floatclear"></div>
-      </article>
+      </section>
       {{- end }}
-    </section>
-    {{ template "_internal/pagination.html" . }}
+
+      {{- with $commissioned }}
+      <section class="list projects-list">
+        <h2 class="list-tier-title">commissions &amp; collaborations</h2>
+        {{- range . }}
+          {{ partial "work-card.html" . }}
+        {{- end }}
+      </section>
+      {{- end }}
+    {{- else }}
+      <section class="list {{ .Kind }}-list">
+        {{- $paginator := .Paginator }}
+        {{- range $paginator.Pages }}
+          {{ partial "work-card.html" . }}
+        {{- end }}
+      </section>
+      {{ template "_internal/pagination.html" . }}
+    {{- end }}
   </div>
 {{ end }}
