@@ -75,6 +75,41 @@ dl.project-meta {
   opacity: 0.65;
 }
 
+// Quoted passages, set by the `quote` shortcode. Each saying is a <pre>, so
+// the stepped indents and deliberate line breaks hold — that shape is part of
+// the quote. `font: inherit` undoes the browser's monospace default, which
+// would otherwise drop these to ~13px; the whole site is already monospace.
+// `pre-wrap` keeps a long line from running off the side of a phone.
+blockquote.quote {
+  margin: 2.5rem 0;
+  padding-left: 1.1rem;
+  border-left: 2px solid currentColor;
+
+  pre {
+    margin: 0 0 1.4rem;
+    padding: 0;
+    background: none;
+    border: 0;
+    font: inherit;
+    white-space: pre-wrap;
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+
+  pre:last-of-type {
+    margin-bottom: 0;
+  }
+
+  cite {
+    display: block;
+    margin-top: 1.2rem;
+    font-size: 0.85em;
+    font-style: normal;
+    letter-spacing: 0.06em;
+    opacity: 0.55;
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Mobile
 //

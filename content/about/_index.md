@@ -9,3 +9,13 @@ radically tender\
 playfully loud\
 thoughtfully inefficient\
 hopelessly self-absorbed
+
+{{< quote author="red burns" >}}
+that poetry drives you, not hardware
+{{< /quote >}}
+
+{{< quote author="red burns" >}}
+make visible
+  that which without YOU
+    may never be seen
+{{< /quote >}}

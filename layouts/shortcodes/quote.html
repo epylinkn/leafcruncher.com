@@ -1,0 +1,24 @@
+{{- /*
+  A quoted passage. Inner content is passed through verbatim — never through
+  the markdown parser — so hand-set indentation and line breaks survive as the
+  author typed them. Blank lines separate one saying from the next.
+
+    {{< quote author="red burns" >}}
+    make visible
+      that which without YOU
+        may never be seen
+    {{< /quote >}}
+
+  Each saying is a <pre>, not a <p>: the shape of the quote is part of the
+  quote, and `hugo --minify` (what Netlify runs) collapses leading whitespace
+  in every element except <pre>. CSS alone would not survive the build.
+*/ -}}
+{{- $author := .Get "author" -}}
+<blockquote class="quote">
+{{- range split (trim .Inner "\n") "\n\n" }}
+  <pre>{{ trim . "\n" }}</pre>
+{{- end }}
+{{- with $author }}
+  <cite>&mdash; {{ . }}</cite>
+{{- end }}
+</blockquote>
