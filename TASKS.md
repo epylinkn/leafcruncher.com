@@ -247,22 +247,87 @@ These are real works that were shown at GitHub Universe 2022. Source repos are l
 
 ---
 
-## T5 — Import operation: criminal cryptokitty
+## T5 — Import operation: criminal cryptokitty ✅ DONE (2026-09-16)
 
 **Type:** documentation · **Size:** small
 
-`content/laboratory/operation-criminal-cryptokitty/index.md` is a two-line TODO pointing at documentation that **already exists**:
+Shipped. `content/laboratory/operation-criminal-cryptokitty/` is now a full page
+with three images, `draft: false`, built and rendering.
 
-- `https://github.com/epylinkn/operation-criminal-kitty/blob/master/DOCUMENTATION.md`
-- `https://www.buoydontfloat.com/operation-criminal-cryptokitty/`
+**One fact was wrong and is now corrected: the date.** The stub said
+`2017-12-01`. The work is **spring 2019** — it was the final project for
+*electronic rituals* at ITP. Evidence: the proposal post is dated 2019-03-13,
+and the documentation screenshots in the source repo run 2019-04-24 to
+2019-05-09. The frontmatter now says `2019-05-09`, the last dated artifact.
+If Anthony would rather date it to the proposal (2019-03-13) or to a specific
+show date, it is a one-line change.
 
-This is the cheapest win in the queue. Pull from those two sources, write the page in the site's voice, keep the `machine learning` tag (it's the only work carrying it), add media if either source has any.
+`role` is deliberately still blank — no source states it, and per the house
+rules a role is a claim about what Anthony did and must not be guessed.
+`collaborators: ["Jenna Xu"]` was already there and is untouched.
 
-Note `buoydontfloat.com` — an earlier site of Anthony's. Worth asking whether more of the 2014–2018 back catalogue lives there.
+**Both source links in the original task have rotted or moved. Read this before
+trusting a URL in this file:**
 
-**Done when:** the page stands on its own without the reader following either link.
+| original source | status | where it actually is |
+|---|---|---|
+| `github.com/epylinkn/operation-criminal-kitty` | live, but slow to pull | cloned locally at `~/itp/electronic-rituals/cryptokitties-phrenology/` — **use the local copy**, it has all nine documentation screenshots at full size |
+| `www.buoydontfloat.com/operation-criminal-cryptokitty/` | **offline** — DNS resolves to 154.222.235.15, connections reset | source is on disk: `~/me/epylinkn/_posts/electronic-rituals/2019-03-13-operation-criminal-cryptokitty.md` |
 
----
+**This answers the open question the task asked.** The 2014–2019 back
+catalogue does live at `buoydontfloat.com` — and `~/me/epylinkn/` is its
+Jekyll source, still on this disk. `_posts/` is organised by ITP class
+(`electronic-rituals/` among them) and `assets/img/` carries the media. The
+site itself is gone from the web, and the Internet Archive was down when this
+was checked, so **that directory is currently the only reachable copy.** It is
+worth a pass of its own: it almost certainly documents works that T6 lists as
+having no page at all.
+
+**Two images came from the source repo and are worth knowing about**, because
+they carry the argument better than the prose does:
+
+- `00-documentation/Screenshot 2019-04-24 21.11.10.png` — the Mechanical Turk
+  HIT as a worker saw it: *"Does this cat look like a criminal?"*, yes/no,
+  $0.01 per task, 200 tasks, no qualifications required.
+- `00-documentation/jailed-1.png` — the Chrome extension running live on the
+  CryptoKitties marketplace, flagged cats behind drawn-on jail bars, each
+  labelled THIS KITTY IS CRIMINAL / DO NOT BUY.
+
+### What is actually in `~/me/epylinkn/` (surveyed 2026-09-16)
+
+About 40 documented posts, 2017–2019, organised by ITP class. **None of them
+are the six works `README.md` lists as having no page, and none are the four
+T6 stubs.** This is a different layer of the practice — the coursework, not the
+exhibited works — so it does not close T6, and T6 should not be re-scoped around
+it.
+
+| class | posts | worth a look |
+|---|---|---|
+| `subtraction` | 10 | fabrication skill builders — hand router, Othermill CNC, wood lathe, 4-axis mill, CNC joinery. **This is the documented evidence for the fabrication claim in T10.** |
+| `electronic-rituals` | 5 | cryptokitty (now shipped), The Human Booster, Oracle in the Shell, Expensive Oracle Service |
+| `visual-language` | 7 | weekly design exercises |
+| `pcom` · `intro-fab` | 7 · 6 | Vending Machine for Future Ailments, Mosquito Alarm Clock, Optic Blast! |
+| `catn` | 5 | interactive fiction — Tracery, Twine, Inform, RenPy |
+| `tangible-interaction` | 5 | Lunar Lander Controller, DMX Controller, pull-chain sensors |
+| `video-and-sound` | 3 | **A Portrait Of: Sara Erenthal**, Napwalk (a soundwalk at Tisch) |
+| `animation` · `collective-play` · `playful-communication` · `100` · `neural-aesthetic` | 2–3 each | Museum of Math field report, Music Sounds Better With You |
+
+**Two concrete finds against existing gaps:**
+
+- **JOYRATS source art exists.** `assets/img/subtraction/othermill-again/05-illustrator-design.png`
+  is the rat design, captioned *"Rat for JOYRATS. This is also going to be a key
+  part of a bigger project, details forthcoming."* Plus
+  `assets/img/subtraction/wheel-of-fortune/53-joyrats.jpg`. `README.md` lists
+  *100 Years of Joyrats* as having no page; this is a starting point.
+- **T10's fabrication claim is documented here.** Anthony's *"i also do
+  fabrication, planning, design, budgeting, everything"* is unevidenced on
+  leafcruncher, but `subtraction/` is ten posts of exactly that, with photos.
+
+**The risk this directory is under.** buoydontfloat.com is offline and the
+Internet Archive was unreachable when this was checked, so `~/me/epylinkn/`
+is currently the only known copy of any of it. It is not in this repo and its
+git status is unverified. That is the same single-copy exposure T7 describes,
+now with a confirmed dead upstream.
 
 ## T6 — Triage the remaining draft stubs
 
