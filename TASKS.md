@@ -278,10 +278,9 @@ trusting a URL in this file:**
 catalogue does live at `buoydontfloat.com` — and `~/me/epylinkn/` is its
 Jekyll source, still on this disk. `_posts/` is organised by ITP class
 (`electronic-rituals/` among them) and `assets/img/` carries the media. The
-site itself is gone from the web, and the Internet Archive was down when this
-was checked, so **that directory is currently the only reachable copy.** It is
-worth a pass of its own: it almost certainly documents works that T6 lists as
-having no page at all.
+site itself is gone from the web, but its source is not at risk: the
+directory is a git checkout of `github.com/epylinkn/epylinkn.github.io`. See
+the survey below for what it does and doesn't contain.
 
 **Two images came from the source repo and are worth knowing about**, because
 they carry the argument better than the prose does:
@@ -323,11 +322,25 @@ it.
   fabrication, planning, design, budgeting, everything"* is unevidenced on
   leafcruncher, but `subtraction/` is ten posts of exactly that, with photos.
 
-**The risk this directory is under.** buoydontfloat.com is offline and the
-Internet Archive was unreachable when this was checked, so `~/me/epylinkn/`
-is currently the only known copy of any of it. It is not in this repo and its
-git status is unverified. That is the same single-copy exposure T7 describes,
-now with a confirmed dead upstream.
+**Backup status (checked 2026-09-16).** `~/me/epylinkn/` pushes to
+`github.com/epylinkn/epylinkn.github.io`, so the committed site is safe even
+though buoydontfloat.com is offline. 60 of the 63 post files are committed.
+The local checkout is **4 commits behind** the remote — pull before editing
+anything there. The remote's version of the cryptokitty post (2019-07-01)
+marks the project as implemented and links the same `DOCUMENTATION.md` the
+page was written from, so the page needs no change.
+
+What exists **only on this disk**, uncommitted:
+
+- posts `100/joy.md`, `100/mindfulness.md`, `2016-07-01-couchium`,
+  `2016-07-05-canvas-background`, `electronic-rituals/2019-04-03-automatic-writing`,
+  `pcom/…vending-machine-for-future-ailments-planning`,
+  `playful-communication/…museum-of-math`
+- screenshots under `assets/img/subtraction/othermill/` and `assets/img/catn/`
+- modified images (`ocarina/*`, several gifs), probably recompressions; unverified
+
+That is the single-copy exposure T7 describes, but small: a handful of
+posts and screenshots, not the whole site.
 
 ## T6 — Triage the remaining draft stubs
 
