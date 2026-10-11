@@ -23,13 +23,24 @@
     {{- if $res }}
         {{- $widths := slice 480 960 1440 1920 }}
         {{- $srcset := slice }}
+        {{- $maxGen := 0 }}
         {{- range $widths }}
             {{- if ge $res.Width . }}
                 {{- $r := $res.Resize (printf "%dx webp q82" .) }}
                 {{- $srcset = $srcset | append (printf "%s %dw" $r.RelPermalink $r.Width) }}
+                {{- $maxGen = $r.Width }}
             {{- end }}
         {{- end }}
-        {{- $srcset = $srcset | append (printf "%s %dw" $res.RelPermalink $res.Width) }}
+        {{- /*
+            Only offer the source file when it is wider than anything generated
+            above. A source sitting exactly on a breakpoint — a 1920px photo,
+            now the house ceiling — would otherwise appear twice at the same
+            `w`, letting the browser pick the unoptimized original over the
+            smaller derivative of identical dimensions.
+        */ -}}
+        {{- if gt $res.Width $maxGen }}
+            {{- $srcset = $srcset | append (printf "%s %dw" $res.RelPermalink $res.Width) }}
+        {{- end }}
         <img src="{{ $res.RelPermalink }}"
              srcset="{{ delimit $srcset ", " }}"
              sizes="(max-width: 900px) 100vw, 900px"

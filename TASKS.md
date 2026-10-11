@@ -441,7 +441,7 @@ contribution beyond the credit line, in his voice.
 
 ## T11 — Re-source the low-resolution photos
 
-**Type:** archive · **Size:** medium · **Tabled (2026-09-08)**
+**Type:** archive · **Size:** medium · **Partly done (2026-10-10)** — swimming pool shipped; PORTAL and light arcade still need hunting
 
 The site now generates a srcset at 480/960/1440/1920 and never upscales, so the
 ceiling on every photo is its source file. A phone at 3× wants ~1125px; the 900px
@@ -466,18 +466,98 @@ originals would have to come from the ten credited photographers (`@selimcinek`,
 `@royalphoenixart`, `@speyerphoto`, `@colinleibold`, `@dr.puya`) — a people
 problem, not a file-hunting one, and it needs their permission either way.
 
-Also note `scripts/optimize-image.sh` should not be re-run as written: it uses
-`-resize 3840x2160^ … -extent 3840x2160`, which **crops every image to 16:9**
-and force-fits thumbnails to a 400×400 square, and it has no `>` flag so it will
-upscale a small source into a large file with no extra detail. Rewrite it around
-what the originals actually are before using it again.
+`scripts/optimize-image.sh` **has been rewritten** (2026-10-10) and is now safe
+to use. It takes `-resize WxW>` — the `>` only ever shrinks — with a square
+bound so it works on either orientation, and no `-extent`, so nothing is
+cropped. Defaults to 1920px long edge at q82, `-auto-orient` before `-strip`.
+Usage: `./scripts/optimize-image.sh -o <bundle> <bundle>/raw/*.jpg`.
 
-**Do:** start with the three works whose originals are already on disk — that is
-pure gain and needs nobody. Then hunt for PORTAL and light arcade. Fearbeast is
-last and depends on other people.
+### Done: at the bottom of the swimming pool (2026-10-10)
+
+All 15 bundle photos regenerated from `raw/` at 1920px long edge, aspect
+preserved, none cropped. Shipping ceiling went 1600 → 1920, and — the bigger
+gain — every smaller tier is now downsampled from the 5760px original instead
+of from a 1600px intermediate, so the 960w and 1440w files carry real detail
+rather than a soft upscale. Cost: +1.2 MB tracked in git. Page weight is
+1.8 MB at the 960w tier, 3.3 MB at 1440w, across 17 lazy-loaded images.
+
+`pool-piano.webp` (1439×960) and `pool-piano-render.jpg` (1500×937) were left
+alone — neither has an original in `raw/`.
+
+`layouts/shortcodes/image/hero.html` was fixed in the same pass: a source
+sitting exactly on a breakpoint (a 1920px photo, now the house ceiling) was
+emitted twice at the same `w`, letting the browser pick the unoptimized
+original over the smaller derivative of identical dimensions. The source is
+now only offered when it is wider than anything generated.
+
+### Not worth doing: COFFEETHEQUE and IN DREAMS
+
+**The table above is wrong about these two — there is no "big win" here.** Both
+pages are a Vimeo embed and nothing else; neither has a photo on the page at
+all. Their only image is the `/projects/` listing thumbnail, and those already
+ship at 1600×1200 and 1067×1600 for a card that renders ~450px wide. They are
+already oversized for their one use, not under. Re-running the pipeline on
+`static/img/projects/raw/{coffeetheque.png,in-dreams.jpg}` would change nothing
+a visitor sees.
+
+The real gap for these two is different, and belongs to T6 rather than here:
+**they have no still photography on the page.** If that is wanted, it is a
+content decision, not a resolution one.
+
+**Do next:** hunt for PORTAL (960×540, the worst on the site — below phone
+resolution) and light arcade. Fearbeast is last and depends on other people.
 
 **Done when:** no published work ships a photo narrower than ~1800px unless no
 better source exists, and that exception is recorded here.
+
+---
+
+## T12 — Visibility categories for the coursework back catalogue
+
+**Type:** schema · **Size:** medium · **Needs Anthony** · **Tabled (2026-10-10)**
+
+Raised by Anthony while surveying `~/me/epylinkn/` (see T5). The ~40 ITP class
+posts there are *"coursework explorations"*. His call: **keep them all on the
+new site**, but the current binary `draft: true/false` can't express how they
+should appear. He named three buckets — **"completely hidden"** for things that
+are just for him, and **"laboratory"** or **"early works"/"archive"** for the
+rest.
+
+**Explicitly tabled until Anthony and Claude walk the projects together.** Do
+not start migrating content or inventing per-post assignments; the point of the
+walkthrough is that the bucket for each piece is Anthony's call. His words:
+*"we should walk through those projects together."*
+
+**One design note to settle first, before any field is added.** The three
+buckets are two different axes:
+
+| axis | question it answers | Anthony's values |
+|---|---|---|
+| visibility | who can see it | "completely hidden" |
+| placement | where it lives on the site | "laboratory", "early works"/"archive" |
+
+Collapsing them into one field means a work can't be both an early work *and*
+hidden, and moving something from laboratory to archive would touch its
+privacy. Recommend two orthogonal fields: a `visibility` value alongside the
+section the page already lives in.
+
+Hugo has real primitives for this and they are worth knowing before choosing:
+`draft` (not built), and `_build: {render: never, list: never}`, which
+separates **not built at all** from **built but unlisted**. "Unlisted but
+reachable by link" is often what "hidden" actually means in practice, and it is
+a different thing from "never rendered". `cascade` in a section's `_index.md`
+can set a default for everything beneath it.
+
+Related existing problems this should resolve rather than work around, from
+the structural notes at the end of this file: `/laboratory/` currently holds
+one published entry and one draft; the `series` taxonomy is configured and
+completely unused; and `/archives/` already exists as a page, so "archive" as a
+*section* would collide with it by name.
+
+**Done when:** Anthony has walked the ~40 posts and assigned each a bucket, the
+schema expresses visibility and placement separately, and
+`hugo --gc --minify` builds clean with nothing leaking that should be hidden.
+
 
 ---
 
